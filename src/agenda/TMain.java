@@ -42,6 +42,8 @@ public class TMain extends javax.swing.JFrame {
         AreaT4Compromissos = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         AreaT4Contatos = new javax.swing.JTextArea();
+        LabelT6Nome = new javax.swing.JLabel();
+        LabelT6Agenda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,12 +56,27 @@ public class TMain extends javax.swing.JFrame {
 
         BtT4Grupo.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT4Grupo.setText("Novo grupo");
+        BtT4Grupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT4GrupoActionPerformed(evt);
+            }
+        });
 
         BtT4EditUser.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT4EditUser.setText("Meu usuário");
+        BtT4EditUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT4EditUserActionPerformed(evt);
+            }
+        });
 
         BtT4Contato.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT4Contato.setText("Novo contato");
+        BtT4Contato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT4ContatoActionPerformed(evt);
+            }
+        });
 
         LabelT4Compromissos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT4Compromissos.setText("Compromissos");
@@ -67,6 +84,11 @@ public class TMain extends javax.swing.JFrame {
         BtT4Compromissos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT4Compromissos.setText("Novo compromisso");
         BtT4Compromissos.setToolTipText("");
+        BtT4Compromissos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT4CompromissosActionPerformed(evt);
+            }
+        });
 
         LabelT4Contatos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT4Contatos.setText("Contatos");
@@ -79,6 +101,12 @@ public class TMain extends javax.swing.JFrame {
         AreaT4Contatos.setRows(5);
         jScrollPane2.setViewportView(AreaT4Contatos);
 
+        LabelT6Nome.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 52)); // NOI18N
+        LabelT6Nome.setText("Nome");
+
+        LabelT6Agenda.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 52)); // NOI18N
+        LabelT6Agenda.setText("Agenda de");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,13 +117,6 @@ public class TMain extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(LabelT4Contatos)
@@ -111,15 +132,35 @@ public class TMain extends javax.swing.JFrame {
                         .addComponent(BtT4Grupo)
                         .addGap(228, 228, 228)
                         .addComponent(BtT4Compromissos)
-                        .addGap(56, 56, 56)))
+                        .addGap(56, 56, 56))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelT6Agenda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LabelT6Nome)
+                        .addGap(356, 356, 356)))
                 .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtT4EditUser)
-                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BtT4EditUser))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LabelT6Nome)
+                            .addComponent(LabelT6Agenda))))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelT4Contatos)
                     .addComponent(LabelT4Compromissos)
@@ -139,6 +180,26 @@ public class TMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtT4EditUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4EditUserActionPerformed
+        this.setVisible(false);
+        this.t6.setVisible(true);
+    }//GEN-LAST:event_BtT4EditUserActionPerformed
+
+    private void BtT4ContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4ContatoActionPerformed
+        this.setVisible(false);
+        this.t2.setVisible(true);
+    }//GEN-LAST:event_BtT4ContatoActionPerformed
+
+    private void BtT4GrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4GrupoActionPerformed
+        this.setVisible(false);
+        this.t5.setVisible(true);
+    }//GEN-LAST:event_BtT4GrupoActionPerformed
+
+    private void BtT4CompromissosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4CompromissosActionPerformed
+        this.setVisible(false);
+        this.t3.setVisible(true);
+    }//GEN-LAST:event_BtT4CompromissosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +255,8 @@ public class TMain extends javax.swing.JFrame {
     private javax.swing.JLabel LabelT4Compromissos;
     private javax.swing.JLabel LabelT4Contatos;
     private javax.swing.JLabel LabelT4Grupos;
+    private javax.swing.JLabel LabelT6Agenda;
+    private javax.swing.JLabel LabelT6Nome;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

@@ -23,6 +23,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="LabelT2Contato" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="383" max="-2" attributes="0"/>
+              <Component id="BtT2Voltar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -38,26 +45,21 @@
                   <Component id="TextT2Nome" alignment="0" max="32767" attributes="0"/>
                   <Component id="TextT2DtNasc" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="TextT2Email" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
-                          <Component id="TextT2Telefone" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="BtT2Editar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="BtT2Salvar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="TextT2Email" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
+                              <Component id="TextT2Telefone" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="LabelT2Contato" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="383" max="-2" attributes="0"/>
-                      <Component id="BtT2Voltar" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="BtT2Salvar" alignment="1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -99,9 +101,12 @@
                       <Component id="TextT2Email" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
-              <Component id="BtT2Salvar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BtT2Editar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtT2Salvar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -116,7 +121,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="PMingLiU-ExtB" size="36" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Novo Contato"/>
+        <Property name="text" type="java.lang.String" value="Contato"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="BtT2Voltar">
@@ -189,6 +194,17 @@
     <Component class="javax.swing.JTextField" name="TextT2Telefone">
     </Component>
     <Component class="javax.swing.JTextField" name="TextT2Email">
+    </Component>
+    <Component class="javax.swing.JButton" name="BtT2Editar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="PMingLiU-ExtB" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Editar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtT2EditarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

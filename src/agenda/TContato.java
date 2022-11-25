@@ -49,11 +49,12 @@ public class TContato extends javax.swing.JFrame {
         TextT2Nome = new javax.swing.JTextField();
         TextT2Telefone = new javax.swing.JTextField();
         TextT2Email = new javax.swing.JTextField();
+        BtT2Editar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         LabelT2Contato.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 36)); // NOI18N
-        LabelT2Contato.setText("Novo Contato");
+        LabelT2Contato.setText("Contato");
 
         BtT2Voltar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT2Voltar.setText("Voltar");
@@ -92,10 +93,24 @@ public class TContato extends javax.swing.JFrame {
             }
         });
 
+        BtT2Editar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
+        BtT2Editar.setText("Editar");
+        BtT2Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT2EditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelT2Contato)
+                .addGap(383, 383, 383)
+                .addComponent(BtT2Voltar)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(300, 300, 300)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,20 +125,16 @@ public class TContato extends javax.swing.JFrame {
                     .addComponent(TextT2Nome)
                     .addComponent(TextT2DtNasc)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BtT2Editar)
+                                .addGap(130, 130, 130)
+                                .addComponent(BtT2Salvar))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TextT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(278, 278, 278))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(LabelT2Contato)
-                        .addGap(383, 383, 383)
-                        .addComponent(BtT2Voltar))
-                    .addComponent(BtT2Salvar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,9 +168,11 @@ public class TContato extends javax.swing.JFrame {
                         .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(TextT2Email)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addComponent(BtT2Salvar)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtT2Editar)
+                    .addComponent(BtT2Salvar))
+                .addGap(62, 62, 62))
         );
 
         pack();
@@ -195,6 +208,10 @@ public class TContato extends javax.swing.JFrame {
         this.t4.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtT2VoltarActionPerformed
+
+    private void BtT2EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT2EditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtT2EditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,6 +258,7 @@ public class TContato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtT2Editar;
     private javax.swing.JButton BtT2Salvar;
     private javax.swing.JButton BtT2Voltar;
     private javax.swing.JLabel LabelT2Contato;
