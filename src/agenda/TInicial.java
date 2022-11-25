@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package agenda;
-
+import DAO.UsuarioDAO;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author gabif
@@ -134,16 +137,33 @@ public class TInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckBoxT1LembrarActionPerformed
 
     private void BtT1LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT1LoginActionPerformed
-        String nome_usuario, senha_usuario;
+        try{
+            String nome_usuario, senha_usuario;
         
-        String pwd = new String(TextT1Senha.getPassword());
-        nome_usuario = TextT1Login.getText();
-        senha_usuario = pwd;
+            String pwd = new String(TextT1Senha.getPassword());
+            nome_usuario = TextT1Login.getText();
+            senha_usuario = pwd;
         
-        Usuario objusuario = new Usuario();
-        objusuario.setNome(nome_usuario);
-        objusuario.setSenha(senha_usuario);
-
+            Usuario objusuario = new Usuario();
+            objusuario.setNome(nome_usuario);
+            objusuario.setSenha(senha_usuario);
+            
+            UsuarioDAO objusuariodao = new UsuarioDAO();
+            ResultSet rsusuariodao = objusuariodao.autenticacaoUsuario(objusuario);
+            
+            if (rsusuariodao.next()){
+                //Chamar tela a abrir
+                this.t4.setVisible(true);
+                dispose();
+                //this.setVisible(false);
+            } else {
+                //msg dizendo incorreto
+                JOptionPane.showMessageDialog(null, "Usuario ou senha invalida");
+            }
+            
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "FRMLOGINVIEW" + erro);
+        }
     }//GEN-LAST:event_BtT1LoginActionPerformed
 
     private void BtT1NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT1NovoUsuarioActionPerformed
