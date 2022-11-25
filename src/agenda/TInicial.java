@@ -134,7 +134,16 @@ public class TInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckBoxT1LembrarActionPerformed
 
     private void BtT1LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT1LoginActionPerformed
-        // TODO add your handling code here:
+        String nome_usuario, senha_usuario;
+        
+        String pwd = new String(TextT1Senha.getPassword());
+        nome_usuario = TextT1Login.getText();
+        senha_usuario = pwd;
+        
+        Usuario objusuario = new Usuario();
+        objusuario.setNome(nome_usuario);
+        objusuario.setSenha(senha_usuario);
+
     }//GEN-LAST:event_BtT1LoginActionPerformed
 
     private void BtT1NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT1NovoUsuarioActionPerformed

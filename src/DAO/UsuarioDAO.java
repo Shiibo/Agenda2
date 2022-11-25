@@ -7,8 +7,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import agenda.Usuario;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class UsuarioDAO {
+    
+    Connection conn;
     public static void SaveU(Usuario usuario){
          String sql = "INSERT INTO usuario(nome, senha, nascimento, endereco, telefone, email) VALUES (?, ?, ?, ?, ?, ?)";
          
@@ -79,6 +83,24 @@ public class UsuarioDAO {
              }catch (Exception e){
              e.printStackTrace();
              }
+        }
+    }
+    
+    public ResultSet autenticacaoUsuario(Usuario objusuario) throws Exception{
+        conn = new ConnectionFactory().createConnectionToMySQL();
+        
+        try {
+            String sql = "select * from usuario where nome = ? and senha = ?";
+            java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, objusuario.getNome());
+            pstm.setString(2, objusuario.getSenha());
+            
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+            
+        } catch (SQLException erro){
+            JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
+            return null;
         }
     }
 }
