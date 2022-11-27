@@ -45,7 +45,7 @@ public class AgendaDAO {
          }
      }
      
-    public List<agenda.Contato> getContato (){
+    public static List<agenda.Contato> getContato (){
      
     String sql = "SELECT * FROM contato";
     
@@ -95,8 +95,8 @@ public class AgendaDAO {
         return contatos;
     }
     
-    public void Update(Contato contato){
-        String sql = "UPDATE contatos SET nome = ?, nascimento = ?, endereco = ?, telefone = ?, email = ? "+"WHERE id = ?";
+    public static void Update(Contato contato){
+        String sql = "UPDATE contato SET nome = ?, nascimento = ?, endereco = ?, telefone = ?, email = ? "+"WHERE id = ?";
         
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -132,8 +132,8 @@ public class AgendaDAO {
         }
     }
     
-    public void Delete(int id){
-        String sql = "DELETE FROM contatos WHERE id = ?";
+    public static void Delete(int id){
+        String sql = "DELETE FROM contato WHERE id = ?";
         
         Connection conn = null;
         

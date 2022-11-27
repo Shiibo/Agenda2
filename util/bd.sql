@@ -2,7 +2,7 @@ create database agenda;
 use agenda;
 
 
-CREATE TABLE `agenda`.`usuario` (
+CREATE TABLE usuario (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `senha` TEXT NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `agenda`.`usuario` (
   `email` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `agenda`.`contato` (
+CREATE TABLE contato (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `nascimento` DATE NULL,
@@ -22,7 +22,7 @@ CREATE TABLE `agenda`.`contato` (
   PRIMARY KEY (`id`));
 
 
-CREATE TABLE `agenda`.`compromisso` (
+CREATE TABLE compromisso (
   `id` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NOT NULL,
@@ -31,3 +31,8 @@ CREATE TABLE `agenda`.`compromisso` (
   `local` VARCHAR(45) NOT NULL,
   `participantes` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
+  
+  select * from contato;
+  
+  
+  
