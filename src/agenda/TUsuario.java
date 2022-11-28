@@ -4,6 +4,12 @@
  */
 package agenda;
 
+import DAO.UsuarioDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author gabif
@@ -29,11 +35,11 @@ public class TUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TextT2Telefone = new javax.swing.JTextField();
-        TextT2Email = new javax.swing.JTextField();
+        TextT6Telefone = new javax.swing.JTextField();
+        TextT6Email = new javax.swing.JTextField();
         LabelT2DtNasc = new javax.swing.JLabel();
-        TextT2Endereco = new javax.swing.JTextField();
-        TextT2DtNasc = new javax.swing.JTextField();
+        TextT6Endereco = new javax.swing.JTextField();
+        TextT6Senha = new javax.swing.JTextField();
         LabelT2Nome = new javax.swing.JLabel();
         BtT2Voltar = new javax.swing.JButton();
         LabelT2Contato1 = new javax.swing.JLabel();
@@ -41,9 +47,9 @@ public class TUsuario extends javax.swing.JFrame {
         BtT2Salvar = new javax.swing.JButton();
         LabelT2Endereco = new javax.swing.JLabel();
         LabelT2Email = new javax.swing.JLabel();
-        TextT2Nome = new javax.swing.JTextField();
+        TextT6Nome = new javax.swing.JTextField();
         LabelT2DtNasc1 = new javax.swing.JLabel();
-        TextT2DtNasc1 = new javax.swing.JTextField();
+        TextT6DtNasc = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,18 +75,17 @@ public class TUsuario extends javax.swing.JFrame {
 
         BtT2Salvar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT2Salvar.setText("Salvar");
+        BtT2Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT2SalvarActionPerformed(evt);
+            }
+        });
 
         LabelT2Endereco.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2Endereco.setText("Endereco");
 
         LabelT2Email.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2Email.setText("E-mail");
-
-        TextT2Nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextT2NomeActionPerformed(evt);
-            }
-        });
 
         LabelT2DtNasc1.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2DtNasc1.setText("Data de Nascimento");
@@ -111,12 +116,12 @@ public class TUsuario extends javax.swing.JFrame {
                                     .addComponent(LabelT2Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TextT2Nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                                    .addComponent(TextT2DtNasc, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addComponent(TextT6Nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                    .addComponent(TextT6Senha, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelT2DtNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
-                                .addComponent(TextT2DtNasc1))
+                                .addComponent(TextT6DtNasc))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(LabelT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,9 +129,9 @@ public class TUsuario extends javax.swing.JFrame {
                                     .addComponent(LabelT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(128, 128, 128)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TextT2Endereco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                                    .addComponent(TextT2Telefone, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TextT2Email, javax.swing.GroupLayout.Alignment.LEADING))))
+                                    .addComponent(TextT6Endereco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                    .addComponent(TextT6Telefone, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextT6Email, javax.swing.GroupLayout.Alignment.LEADING))))
                         .addGap(278, 278, 278))))
         );
         layout.setVerticalGroup(
@@ -146,9 +151,9 @@ public class TUsuario extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(LabelT2DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(TextT2Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TextT6Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(TextT2DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextT6Senha, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,7 +161,7 @@ public class TUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TextT2DtNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextT6DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelT2DtNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -168,11 +173,11 @@ public class TUsuario extends javax.swing.JFrame {
                                 .addGap(37, 37, 37)
                                 .addComponent(LabelT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(TextT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TextT6Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
-                                .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TextT6Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
-                                .addComponent(TextT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(TextT6Email, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 151, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -180,13 +185,33 @@ public class TUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextT2NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextT2NomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextT2NomeActionPerformed
-
     private void BtT2VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT2VoltarActionPerformed
-        // TODO add your handling code here:
+        this.t1.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtT2VoltarActionPerformed
+
+    private void BtT2SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT2SalvarActionPerformed
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+        java.sql.Date data = null;
+        try {
+            data = new java.sql.Date(formato.parse(this.TextT6DtNasc.getText()).getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(TContato.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        Usuario u = new Usuario();
+       
+        //c.setId();
+        u.setNome(this.TextT6Nome.getText());
+        u.setSenha(this.TextT6Senha.getText());
+        u.setNascimento(data);
+        u.setEndereco(this.TextT6Endereco.getText());
+        u.setTelefone(Integer.parseInt(this.TextT6Telefone.getText()));
+        u.setEmail(this.TextT6Email.getText());
+        
+        UsuarioDAO.SaveU(u);
+    }//GEN-LAST:event_BtT2SalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,11 +266,11 @@ public class TUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel LabelT2Endereco;
     private javax.swing.JLabel LabelT2Nome;
     private javax.swing.JLabel LabelT2Telefone;
-    private javax.swing.JTextField TextT2DtNasc;
-    private javax.swing.JTextField TextT2DtNasc1;
-    private javax.swing.JTextField TextT2Email;
-    private javax.swing.JTextField TextT2Endereco;
-    private javax.swing.JTextField TextT2Nome;
-    private javax.swing.JTextField TextT2Telefone;
+    private javax.swing.JTextField TextT6DtNasc;
+    private javax.swing.JTextField TextT6Email;
+    private javax.swing.JTextField TextT6Endereco;
+    private javax.swing.JTextField TextT6Nome;
+    private javax.swing.JTextField TextT6Senha;
+    private javax.swing.JTextField TextT6Telefone;
     // End of variables declaration//GEN-END:variables
 }

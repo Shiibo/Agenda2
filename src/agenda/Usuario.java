@@ -1,6 +1,6 @@
 package agenda;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Usuario {
     /*`id` INT NOT NULL AUTO_INCREMENT,

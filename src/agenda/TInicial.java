@@ -45,7 +45,7 @@ public class TInicial extends javax.swing.JFrame {
         LabelT1Senha.setToolTipText("");
 
         LabelT1Login.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
-        LabelT1Login.setText("Login");
+        LabelT1Login.setText("Id");
 
         CheckBoxT1Lembrar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 14)); // NOI18N
         CheckBoxT1Lembrar.setText("Lembre-se de mim");
@@ -138,7 +138,7 @@ public class TInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_BtT1LoginActionPerformed
 
     private void BtT1NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT1NovoUsuarioActionPerformed
-        //this.t6.setVisible(true);
+        this.t6.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtT1NovoUsuarioActionPerformed
 
