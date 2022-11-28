@@ -10,9 +10,12 @@ package agenda;
  */
 public class TUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TUsuario
-     */
+    private TInicial t1;
+    private TContato t2;
+    private TCompromisso t3;
+    private TMain t4;
+    private TGrupo t5;
+    
     public TUsuario() {
         initComponents();
     }
@@ -30,37 +33,31 @@ public class TUsuario extends javax.swing.JFrame {
         TextT2Email = new javax.swing.JTextField();
         LabelT2DtNasc = new javax.swing.JLabel();
         TextT2Endereco = new javax.swing.JTextField();
-        BtT2MaisTelefone = new javax.swing.JButton();
         TextT2DtNasc = new javax.swing.JTextField();
         LabelT2Nome = new javax.swing.JLabel();
         BtT2Voltar = new javax.swing.JButton();
-        BtT2MaisEmail = new javax.swing.JButton();
         LabelT2Contato1 = new javax.swing.JLabel();
         LabelT2Telefone = new javax.swing.JLabel();
         BtT2Salvar = new javax.swing.JButton();
         LabelT2Endereco = new javax.swing.JLabel();
         LabelT2Email = new javax.swing.JLabel();
         TextT2Nome = new javax.swing.JTextField();
+        LabelT2DtNasc1 = new javax.swing.JLabel();
+        TextT2DtNasc1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         LabelT2DtNasc.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
-        LabelT2DtNasc.setText("Data de Nascimento");
-
-        BtT2MaisTelefone.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
-        BtT2MaisTelefone.setText("+");
+        LabelT2DtNasc.setText("Senha");
 
         LabelT2Nome.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2Nome.setText("Nome");
 
         BtT2Voltar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT2Voltar.setText("Voltar");
-
-        BtT2MaisEmail.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
-        BtT2MaisEmail.setText("+");
-        BtT2MaisEmail.addActionListener(new java.awt.event.ActionListener() {
+        BtT2Voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtT2MaisEmailActionPerformed(evt);
+                BtT2VoltarActionPerformed(evt);
             }
         });
 
@@ -85,6 +82,9 @@ public class TUsuario extends javax.swing.JFrame {
             }
         });
 
+        LabelT2DtNasc1.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
+        LabelT2DtNasc1.setText("Data de Nascimento");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,32 +92,42 @@ public class TUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(300, 300, 300)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelT2DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelT2Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextT2Endereco, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                    .addComponent(TextT2Nome)
-                    .addComponent(TextT2Telefone)
-                    .addComponent(TextT2Email)
-                    .addComponent(TextT2DtNasc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtT2MaisTelefone)
-                    .addComponent(BtT2MaisEmail))
-                .addGap(225, 225, 225))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BtT2Salvar)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(LabelT2Contato1)
-                        .addGap(357, 357, 357)
-                        .addComponent(BtT2Voltar)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                                .addComponent(LabelT2Contato1)
+                                .addGap(357, 357, 357)
+                                .addComponent(BtT2Voltar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BtT2Salvar)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelT2DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LabelT2Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TextT2Nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                    .addComponent(TextT2DtNasc, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelT2DtNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(TextT2DtNasc1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LabelT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LabelT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(128, 128, 128)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TextT2Endereco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                    .addComponent(TextT2Telefone, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextT2Email, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGap(278, 278, 278))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,46 +140,53 @@ public class TUsuario extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(LabelT2Contato1)))
                 .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LabelT2Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(LabelT2DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(LabelT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(LabelT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(LabelT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(LabelT2DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(TextT2Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(TextT2DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(TextT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addComponent(TextT2DtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtT2Salvar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtT2MaisTelefone))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BtT2MaisEmail)
-                            .addComponent(TextT2Email))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(BtT2Salvar)
+                            .addComponent(TextT2DtNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelT2DtNasc1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(LabelT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(LabelT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(LabelT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(TextT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(TextT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 151, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtT2MaisEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT2MaisEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtT2MaisEmailActionPerformed
-
     private void TextT2NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextT2NomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextT2NomeActionPerformed
+
+    private void BtT2VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT2VoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtT2VoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,19 +222,27 @@ public class TUsuario extends javax.swing.JFrame {
             }
         });
     }
+    
+    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TMain t4, TGrupo t5) {
+        this.t1 = t1;
+        this.t2 = t2;
+        this.t3 = t3;
+        this.t4 = t4;
+        this.t5 = t5;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtT2MaisEmail;
-    private javax.swing.JButton BtT2MaisTelefone;
     private javax.swing.JButton BtT2Salvar;
     private javax.swing.JButton BtT2Voltar;
     private javax.swing.JLabel LabelT2Contato1;
     private javax.swing.JLabel LabelT2DtNasc;
+    private javax.swing.JLabel LabelT2DtNasc1;
     private javax.swing.JLabel LabelT2Email;
     private javax.swing.JLabel LabelT2Endereco;
     private javax.swing.JLabel LabelT2Nome;
     private javax.swing.JLabel LabelT2Telefone;
     private javax.swing.JTextField TextT2DtNasc;
+    private javax.swing.JTextField TextT2DtNasc1;
     private javax.swing.JTextField TextT2Email;
     private javax.swing.JTextField TextT2Endereco;
     private javax.swing.JTextField TextT2Nome;

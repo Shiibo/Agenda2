@@ -26,38 +26,56 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="LabelT2DtNasc" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
-                  <Component id="LabelT2Nome" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                  <Component id="LabelT2Endereco" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                  <Component id="LabelT2Email" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                  <Component id="LabelT2Telefone" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="TextT2Endereco" alignment="0" pref="299" max="32767" attributes="0"/>
-                  <Component id="TextT2Nome" alignment="0" max="32767" attributes="0"/>
-                  <Component id="TextT2Telefone" alignment="0" max="32767" attributes="0"/>
-                  <Component id="TextT2Email" alignment="0" max="32767" attributes="0"/>
-                  <Component id="TextT2DtNasc" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="BtT2MaisTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="BtT2MaisEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="BtT2Salvar" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="LabelT2Contato1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
-                      <Component id="BtT2Voltar" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace pref="173" max="32767" attributes="0"/>
+                              <Component id="LabelT2Contato1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
+                              <Component id="BtT2Voltar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="BtT2Salvar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LabelT2DtNasc" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
+                                  <Component id="LabelT2Nome" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="TextT2Nome" alignment="0" pref="299" max="32767" attributes="0"/>
+                                  <Component id="TextT2DtNasc" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="LabelT2DtNasc1" min="-2" pref="198" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="TextT2DtNasc1" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LabelT2Endereco" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="LabelT2Email" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="LabelT2Telefone" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="TextT2Endereco" alignment="0" pref="299" max="32767" attributes="0"/>
+                                  <Component id="TextT2Telefone" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="TextT2Email" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,38 +93,50 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="LabelT2Nome" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="LabelT2DtNasc" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="LabelT2Endereco" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="LabelT2Telefone" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="LabelT2Email" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="TextT2Nome" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="TextT2DtNasc" min="-2" pref="41" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="TextT2Endereco" min="-2" pref="41" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="TextT2Telefone" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="BtT2MaisTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="BtT2MaisEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="TextT2Email" alignment="0" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="83" max="32767" attributes="0"/>
-              <Component id="BtT2Salvar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="BtT2Salvar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="TextT2DtNasc1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="LabelT2DtNasc1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                              <Component id="LabelT2Endereco" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="LabelT2Telefone" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="LabelT2Email" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="TextT2Endereco" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="TextT2Telefone" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="TextT2Email" min="-2" pref="43" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="151" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -122,18 +152,10 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="PMingLiU-ExtB" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Data de Nascimento"/>
+        <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TextT2Endereco">
-    </Component>
-    <Component class="javax.swing.JButton" name="BtT2MaisTelefone">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="PMingLiU-ExtB" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="+"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TextT2DtNasc">
     </Component>
@@ -152,16 +174,8 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="BtT2MaisEmail">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="PMingLiU-ExtB" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="+"/>
-      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtT2MaisEmailActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtT2VoltarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelT2Contato1">
@@ -208,6 +222,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextT2NomeActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelT2DtNasc1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="PMingLiU-ExtB" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Data de Nascimento"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextT2DtNasc1">
     </Component>
   </SubComponents>
 </Form>

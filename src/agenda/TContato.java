@@ -21,6 +21,7 @@ public class TContato extends javax.swing.JFrame {
     private TCompromisso t3;
     private TMain t4;
     private TGrupo t5;
+    private TUsuario t6;
     
     public TContato() {
         initComponents();
@@ -40,9 +41,7 @@ public class TContato extends javax.swing.JFrame {
         LabelT2Contato = new javax.swing.JLabel();
         BtT2Voltar = new javax.swing.JButton();
         LabelT2DtNasc = new javax.swing.JLabel();
-        BtT2MaisTelefone = new javax.swing.JButton();
         LabelT2Nome = new javax.swing.JLabel();
-        BtT2MaisEmail = new javax.swing.JButton();
         LabelT2Telefone = new javax.swing.JLabel();
         BtT2Salvar = new javax.swing.JButton();
         LabelT2Endereco = new javax.swing.JLabel();
@@ -58,23 +57,17 @@ public class TContato extends javax.swing.JFrame {
 
         BtT2Voltar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT2Voltar.setText("Voltar");
+        BtT2Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT2VoltarActionPerformed(evt);
+            }
+        });
 
         LabelT2DtNasc.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2DtNasc.setText("Data de Nascimento");
 
-        BtT2MaisTelefone.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
-        BtT2MaisTelefone.setText("+");
-
         LabelT2Nome.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2Nome.setText("Nome");
-
-        BtT2MaisEmail.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
-        BtT2MaisEmail.setText("+");
-        BtT2MaisEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtT2MaisEmailActionPerformed(evt);
-            }
-        });
 
         LabelT2Telefone.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2Telefone.setText("Telefone");
@@ -121,11 +114,7 @@ public class TContato extends javax.swing.JFrame {
                             .addComponent(TextT2Email, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtT2MaisTelefone)
-                    .addComponent(BtT2MaisEmail))
-                .addGap(225, 225, 225))
+                .addGap(278, 278, 278))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,13 +154,9 @@ public class TContato extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(TextT2Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtT2MaisTelefone))
+                        .addComponent(TextT2Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BtT2MaisEmail)
-                            .addComponent(TextT2Email))))
+                        .addComponent(TextT2Email)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(BtT2Salvar)
                 .addContainerGap())
@@ -179,10 +164,6 @@ public class TContato extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtT2MaisEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT2MaisEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtT2MaisEmailActionPerformed
 
     private void TextT2NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextT2NomeActionPerformed
         // TODO add your handling code here:
@@ -209,6 +190,11 @@ public class TContato extends javax.swing.JFrame {
         
         AgendaDAO.Save(c);
     }//GEN-LAST:event_BtT2SalvarActionPerformed
+
+    private void BtT2VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT2VoltarActionPerformed
+        this.t4.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtT2VoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,16 +231,16 @@ public class TContato extends javax.swing.JFrame {
         });
     }
     
-    void setTelas(TInicial t1, TCompromisso t3, TMain t4, TGrupo t5) {
+    void setTelas(TInicial t1, TCompromisso t3, TMain t4, TGrupo t5, TUsuario t6) {
         this.t1 = t1;
         this.t3 = t3;
         this.t4 = t4;
         this.t5 = t5;
+        this.t6 = t6;
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtT2MaisEmail;
-    private javax.swing.JButton BtT2MaisTelefone;
     private javax.swing.JButton BtT2Salvar;
     private javax.swing.JButton BtT2Voltar;
     private javax.swing.JLabel LabelT2Contato;

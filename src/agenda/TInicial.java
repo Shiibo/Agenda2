@@ -14,6 +14,7 @@ public class TInicial extends javax.swing.JFrame {
     private TCompromisso t3;
     private TMain t4;
     private TGrupo t5;
+    private TUsuario t6;
     
     public TInicial() {
         initComponents();
@@ -176,11 +177,12 @@ public class TInicial extends javax.swing.JFrame {
         });
     }
     
-    void setTelas(TContato t2, TCompromisso t3, TMain t4, TGrupo t5) {
+    void setTelas(TContato t2, TCompromisso t3, TMain t4, TGrupo t5, TUsuario t6) {
         this.t2 = t2;
         this.t3 = t3;
         this.t4 = t4;
         this.t5 = t5;
+        this.t6 = t6;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
