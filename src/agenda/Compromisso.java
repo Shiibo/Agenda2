@@ -1,7 +1,7 @@
 package agenda;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 public class Compromisso {
     /*`id` INT NOT NULL AUTO_INCREMENT,
@@ -18,7 +18,15 @@ public class Compromisso {
     private Date horainicio;
     private Date horafim;
     private String local;
-    //private ArrayList<Agenda.Grupo> bd = new ArrayList<Agenda.Grupo>();
+    public ArrayList<agenda.Compromisso> participantes = new ArrayList<agenda.Compromisso>();
+
+    public ArrayList<Compromisso> getParticipantes() {
+        return participantes;
+    }
+
+    public void setParticipantes(ArrayList<Compromisso> participantes) {
+        this.participantes = participantes;
+    }
 
     public int getId() {
         return id;

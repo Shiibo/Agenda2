@@ -4,6 +4,12 @@
  */
 package agenda;
 
+import DAO.AgendaDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author gabif
@@ -15,6 +21,7 @@ public class TCompromisso extends javax.swing.JFrame {
     private TMain t4;
     private TGrupo t5;
     private TUsuario t6;
+    private TParticipantes t7;
     
     public TCompromisso() {
         initComponents();
@@ -62,9 +69,19 @@ public class TCompromisso extends javax.swing.JFrame {
 
         BtT3Salvar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT3Salvar.setText("Salvar");
+        BtT3Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT3SalvarActionPerformed(evt);
+            }
+        });
 
         BtT3AddParticipantes.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT3AddParticipantes.setText("Adicionar participantes");
+        BtT3AddParticipantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT3AddParticipantesActionPerformed(evt);
+            }
+        });
 
         LabelT3NovoCompromisso.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 36)); // NOI18N
         LabelT3NovoCompromisso.setText("Novo Compromisso");
@@ -100,12 +117,17 @@ public class TCompromisso extends javax.swing.JFrame {
                             .addComponent(LabelT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextT3Dtinicial, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 315, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TextT3Dtinicial, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TextT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 318, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(BtT3AddParticipantes)
@@ -123,9 +145,9 @@ public class TCompromisso extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(BtT3Voltar)))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,15 +173,53 @@ public class TCompromisso extends javax.swing.JFrame {
                                 .addComponent(TextT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(BtT3AddParticipantes)
-                        .addContainerGap(25, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtT3Salvar)
-                        .addContainerGap())))
+                        .addGap(0, 14, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BtT3Salvar)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtT3SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT3SalvarActionPerformed
+        /*SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+        java.sql.Date data1 = null;
+        java.sql.Date data2 = null;
+        try {
+            data1 = new java.sql.Date(formato.parse(this.TextT3Dtinicial.getText()));
+            data2 = new java.sql.Date(formato.parse(this.TextT3DtFinal.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(TContato.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        java.util.Date data1 = null;
+        java.util.Date data2 = null;
+        try {
+            data1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.TextT3Dtinicial.getText());
+            data2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.TextT3DtFinal.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(TContato.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        AgendaDAO agendaDao = new AgendaDAO();
+        Compromisso c = new Compromisso();
+        
+        //c.setId();
+        c.setTitulo(this.TextT3Titulo.getText());
+        c.setDescricao(this.AreaT3Descricao.getText());
+        //c.setHorainicio(data1);
+        //c.setHorafim(data2);
+        c.setLocal(this.TextT3Local.getText());
+        //c.setTelefone(Integer.parseInt(this.TextT2Telefone.getText()));
+        //c.setEmail(this.TextT2Email.getText());
+        
+        AgendaDAO.SaveComp(c);
+    }//GEN-LAST:event_BtT3SalvarActionPerformed
+
+    private void BtT3AddParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT3AddParticipantesActionPerformed
+        this.t7.setVisible(true);
+    }//GEN-LAST:event_BtT3AddParticipantesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,12 +256,13 @@ public class TCompromisso extends javax.swing.JFrame {
         });
     }
     
-    void setTelas(TInicial t1, TContato t2, TMain t4, TGrupo t5, TUsuario t6) {
+    void setTelas(TInicial t1, TContato t2, TMain t4, TGrupo t5, TUsuario t6, TParticipantes t7) {
         this.t1 = t1;
         this.t2 = t2;
         this.t4 = t4;
         this.t5 = t5;
         this.t6 = t6;
+        this.t7 = t7;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

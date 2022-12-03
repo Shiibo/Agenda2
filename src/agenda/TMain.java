@@ -15,6 +15,7 @@ public class TMain extends javax.swing.JFrame {
     private TCompromisso t3;
     private TGrupo t5;
     private TUsuario t6;
+    private TParticipantes t7;
     
     public TMain() {
         initComponents();
@@ -175,12 +176,13 @@ public class TMain extends javax.swing.JFrame {
         });
     }
     
-    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TGrupo t5, TUsuario t6) {
+    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TGrupo t5, TUsuario t6, TParticipantes t7) {
         this.t1 = t1;
         this.t2 = t2;
         this.t3 = t3;
         this.t5 = t5;
         this.t6 = t6;
+        this.t7 = t7;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
