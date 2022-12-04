@@ -4,6 +4,11 @@
  */
 package agenda;
 
+import DAO.AgendaDAO;
+import static DAO.AgendaDAO.getContato;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author gabif
@@ -44,6 +49,7 @@ public class TMain extends javax.swing.JFrame {
         AreaT4Contatos = new javax.swing.JTextArea();
         LabelT6Nome = new javax.swing.JLabel();
         LabelT6Agenda = new javax.swing.JLabel();
+        BtT4Atualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,14 +113,18 @@ public class TMain extends javax.swing.JFrame {
         LabelT6Agenda.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 52)); // NOI18N
         LabelT6Agenda.setText("Agenda de");
 
+        BtT4Atualizar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
+        BtT4Atualizar.setText("Atualizar");
+        BtT4Atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT4AtualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtT4EditUser)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -139,27 +149,35 @@ public class TMain extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelT6Agenda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LabelT6Nome)
-                        .addGap(356, 356, 356)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelT6Agenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelT6Nome)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(BtT4EditUser))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtT4Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BtT4EditUser))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LabelT6Nome)
-                            .addComponent(LabelT6Agenda))))
+                        .addComponent(BtT4EditUser)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtT4Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabelT6Nome)
+                        .addComponent(LabelT6Agenda)))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelT4Contatos)
@@ -200,6 +218,18 @@ public class TMain extends javax.swing.JFrame {
         this.setVisible(false);
         this.t3.setVisible(true);
     }//GEN-LAST:event_BtT4CompromissosActionPerformed
+
+    private void BtT4AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4AtualizarActionPerformed
+        AgendaDAO contatoDAO = new AgendaDAO();
+        List<Contato> contatos = new ArrayList<Contato>();
+        contatos  = getContato();
+        this.AreaT4Contatos.setText("");
+        
+        for (int i = 0; i < contatos.size(); i++)
+        {
+            AreaT4Contatos.append(String.valueOf(contatos.get(i).getNome()+"\n"));
+        }
+    }//GEN-LAST:event_BtT4AtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,6 +278,7 @@ public class TMain extends javax.swing.JFrame {
     private javax.swing.JTextArea AreaT4Compromissos;
     private javax.swing.JTextArea AreaT4Contatos;
     private javax.swing.JTextArea AreaT4Grupos;
+    private javax.swing.JButton BtT4Atualizar;
     private javax.swing.JButton BtT4Compromissos;
     private javax.swing.JButton BtT4Contato;
     private javax.swing.JButton BtT4EditUser;

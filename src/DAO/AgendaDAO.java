@@ -70,7 +70,7 @@ public class AgendaDAO {
             c.setId(rset.getInt("id"));
             c.setNome(rset.getString("nome"));
             c.setNascimento(rset.getDate("nascimento"));
-            c.setEndereco(rset.getString("enderco"));
+            c.setEndereco(rset.getString("endereco"));
             c.setTelefone(rset.getInt("telefone"));
             c.setEmail(rset.getString("email"));
             
