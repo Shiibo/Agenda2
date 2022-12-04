@@ -21,7 +21,7 @@ public class Agenda {
         t7.setTelas(t1, t2, t3, t4, t5, t6);
         t8.setTelas(t1, t2, t3, t4, t5, t6, t7);
         
-        t1.setVisible(true); 
+        t3.setVisible(true); 
     }
     
 }

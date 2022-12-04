@@ -1,7 +1,7 @@
 package agenda;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Compromisso {
     /*`id` INT NOT NULL AUTO_INCREMENT,
@@ -12,15 +12,15 @@ public class Compromisso {
   `local` VARCHAR(45) NOT NULL,
   `participantes` VARCHAR(45) NULL,*/
     
-    private int id;
+    private static int id;
     private String titulo;
     private String descricao;
-    private Date horainicio;
-    private Date horafim;
+    private Timestamp horainicio;
+    private Timestamp horafim;
     private String local;
     //private ArrayList<Agenda.Grupo> bd = new ArrayList<Agenda.Grupo>();
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
@@ -44,19 +44,19 @@ public class Compromisso {
         this.descricao = descricao;
     }
 
-    public Date getHorainicio() {
+    public Timestamp getHorainicio() {
         return horainicio;
     }
 
-    public void setHorainicio(Date horainicio) {
+    public void setHorainicio(Timestamp horainicio) {
         this.horainicio = horainicio;
     }
 
-    public Date getHorafim() {
+    public Timestamp getHorafim() {
         return horafim;
     }
 
-    public void setHorafim(Date horafim) {
+    public void setHorafim(Timestamp horafim) {
         this.horafim = horafim;
     }
 

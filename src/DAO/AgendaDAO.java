@@ -2,6 +2,7 @@ package DAO;
 
 import Factory.ConnectionFactory;
 import agenda.Contato;
+import agenda.Compromisso;
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class AgendaDAO {
      
     public static List<agenda.Contato> getContato (){
      
-    String sql = "SELECT * FROM contato";
+    String sql = "SELECT * FROM contato;";
     
     List<Contato> contatos = new ArrayList<Contato>();
     
@@ -162,4 +163,122 @@ public class AgendaDAO {
              }
         }
     }
+    
+    public static void SaveComp(Compromisso compromisso){
+        String sql = "INSERT INTO compromisso(titulo, descricao, horainicio, horafim, local) VALUES (?, ?, ?, ?, ?)";
+        //titulo, descricao, datainicio, datafim, local, participantes
+        
+        List<Contato> contatos = new ArrayList<Contato>();
+        contatos = getContato();
+        
+        
+         Connection conn = null;
+         PreparedStatement pstm = null;
+         
+         try {
+             conn = ConnectionFactory.createConnectionToMySQL();
+             
+             pstm = (PreparedStatement) conn.prepareStatement(sql);
+             pstm.setString(1, compromisso.getTitulo());
+             pstm.setString(2, compromisso.getDescricao());
+             pstm.setTimestamp(3, compromisso.getHorainicio());
+             pstm.setTimestamp(4, compromisso.getHorafim());
+             pstm.setString(5, compromisso.getLocal());
+             //this.AreaMenuPesquisa.append(bd.get(i).getNome()+"\n");
+             
+             pstm.execute();
+         } catch (Exception e){
+             e.printStackTrace();
+         }finally{
+             try {
+                 if(pstm!=null){
+                     pstm.close();
+                 }
+                 
+                 if(conn!=null){
+                     conn.close();
+                 }
+             }catch (Exception e){
+             e.printStackTrace();
+             }
+         }
+    }
+    
+    public static void AddPart(int idcomp, int idcontato){
+        String sql = "INSERT INTO compromissocontato VALUES (?, ?)";
+        
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+             
+             pstm = (PreparedStatement) conn.prepareStatement(sql);
+             pstm.setInt(1, idcomp);
+             pstm.setInt(2, idcontato);
+            
+             pstm.execute();
+             
+             
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            try {
+                 if(pstm!=null){
+                     pstm.close();
+                 }
+                 
+                 if(conn!=null){
+                     conn.close();
+                 }
+             }catch (Exception e){
+             e.printStackTrace();
+             }
+        }
+    }
+    
+    public static int GetIdComp(String titulo, String descricao){
+         String sql = "SELECT id FROM compromisso WHERE titulo = ? AND descricao = ?";
+        
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        
+        ResultSet rset = null;
+        
+        int id = 0;
+    
+    try {
+        conn = ConnectionFactory.createConnectionToMySQL();
+        
+        pstm = (PreparedStatement) conn.prepareStatement(sql);
+        
+        pstm.setString(1, titulo);
+        pstm.setString(2, descricao);
+        
+        rset = pstm.executeQuery();
+        
+        while (rset.next()) {
+            id = rset.getInt("id");
+             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try{
+            if(rset!=null){
+                rset.close();
+            }
+                if(pstm!=null){
+                pstm.close();
+            }
+                if(conn!=null){
+                conn.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            }
+        }
+        
+    return id;
+    }
+    
 }

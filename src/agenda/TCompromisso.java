@@ -4,6 +4,12 @@
  */
 package agenda;
 
+import DAO.AgendaDAO;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author gabif
@@ -46,11 +52,10 @@ public class TCompromisso extends javax.swing.JFrame {
         LabelT3Descricao = new javax.swing.JLabel();
         LabelT3DtInicial = new javax.swing.JLabel();
         LabelT3Local = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        AreaT3Participantes = new javax.swing.JTextArea();
-        LabelT3Participantes1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        AreaT3Participantes1 = new javax.swing.JTextArea();
+        TexT3tIdComp = new javax.swing.JTextField();
+        TextT3IdCont = new javax.swing.JTextField();
+        LabelT3Participantes2 = new javax.swing.JLabel();
+        LabelT3Participantes3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +64,10 @@ public class TCompromisso extends javax.swing.JFrame {
 
         LabelT3DtFinal.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT3DtFinal.setText("Data e hora final");
+
+        TextT3DtFinal.setText("Formato dd/mm/aa hh:mm:ss");
+
+        TextT3Dtinicial.setText("Formato dd/mm/aa hh:mm:ss");
 
         AreaT3Descricao.setColumns(20);
         AreaT3Descricao.setRows(5);
@@ -74,9 +83,19 @@ public class TCompromisso extends javax.swing.JFrame {
 
         BtT3Salvar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT3Salvar.setText("Salvar");
+        BtT3Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT3SalvarActionPerformed(evt);
+            }
+        });
 
         BtT3Editar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
-        BtT3Editar.setText("Editar");
+        BtT3Editar.setText("Adicionar participante");
+        BtT3Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT3EditarActionPerformed(evt);
+            }
+        });
 
         LabelT3NovoCompromisso.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 36)); // NOI18N
         LabelT3NovoCompromisso.setText("Compromisso");
@@ -94,16 +113,18 @@ public class TCompromisso extends javax.swing.JFrame {
         LabelT3Local.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT3Local.setText("Local");
 
-        AreaT3Participantes.setColumns(20);
-        AreaT3Participantes.setRows(5);
-        jScrollPane2.setViewportView(AreaT3Participantes);
+        TexT3tIdComp.setEditable(false);
+        TexT3tIdComp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TexT3tIdCompActionPerformed(evt);
+            }
+        });
 
-        LabelT3Participantes1.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
-        LabelT3Participantes1.setText("Todos os contatos");
+        LabelT3Participantes2.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
+        LabelT3Participantes2.setText("Id do contato");
 
-        AreaT3Participantes1.setColumns(20);
-        AreaT3Participantes1.setRows(5);
-        jScrollPane3.setViewportView(AreaT3Participantes1);
+        LabelT3Participantes3.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
+        LabelT3Participantes3.setText("Id do compromisso");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,25 +148,36 @@ public class TCompromisso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(TextT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(LabelT3Participantes, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(159, 159, 159)
+                        .addComponent(LabelT3Participantes, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BtT3Editar, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TextT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TextT3Dtinicial, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TextT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(46, 46, 46)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane3)
-                        .addComponent(LabelT3Participantes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(BtT3Salvar))
-                .addContainerGap(115, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TextT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextT3Dtinicial, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(97, 97, 97)
+                                .addComponent(BtT3Salvar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addComponent(LabelT3Participantes3)
+                                .addGap(18, 18, 18)
+                                .addComponent(LabelT3Participantes2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(100, 100, 100))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(135, 135, 135)
+                                        .addComponent(TexT3tIdComp, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(86, 86, 86)
+                                        .addComponent(TextT3IdCont, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(162, 162, 162)
+                                        .addComponent(BtT3Editar)))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,45 +189,44 @@ public class TCompromisso extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(LabelT3NovoCompromisso)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(LabelT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(19, 19, 19)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(182, 182, 182)
-                                    .addComponent(LabelT3DtInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(LabelT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(LabelT3Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addComponent(LabelT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(TextT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(LabelT3Participantes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(TextT3Dtinicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(TextT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(TextT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane2))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(LabelT3Participantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LabelT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(182, 182, 182)
+                                .addComponent(LabelT3DtInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(LabelT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LabelT3Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtT3Editar)
-                    .addComponent(BtT3Salvar))
-                .addGap(34, 34, 34))
+                        .addComponent(LabelT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TextT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelT3Participantes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TextT3Dtinicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TextT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelT3Participantes2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelT3Participantes3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(TextT3IdCont, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TexT3tIdComp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextT3Local, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtT3Salvar)
+                    .addComponent(BtT3Editar))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -205,6 +236,45 @@ public class TCompromisso extends javax.swing.JFrame {
         this.t4.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtT3VoltarActionPerformed
+
+    private void BtT3SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT3SalvarActionPerformed
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss"); 
+        java.sql.Timestamp data1 = null, data2 = null;
+        
+        try {
+            data1 = new java.sql.Timestamp(formato.parse(this.TextT3Dtinicial.getText()).getTime());
+            data2 = new java.sql.Timestamp(formato.parse(this.TextT3DtFinal.getText()).getTime());
+        } catch (ParseException ex) {
+            java.util.logging.Logger.getLogger(TCompromisso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+            
+        
+        AgendaDAO agendaDao = new AgendaDAO();
+        Compromisso c = new Compromisso();
+
+        //c.setId();
+        c.setTitulo(this.TextT3Titulo.getText());
+        c.setDescricao(this.AreaT3Descricao.getText());
+        c.setHorainicio(data1);
+        c.setHorafim(data2);
+        c.setLocal(this.TextT3Local.getText());
+        //c.setEmail(this.TextT2Email.getText());
+        String a = this.TextT3Titulo.getText();
+        String b = this.AreaT3Descricao.getText();
+
+        AgendaDAO.SaveComp(c);
+        
+        this.TexT3tIdComp.setText(String.valueOf(AgendaDAO.GetIdComp(a, b)));
+    }//GEN-LAST:event_BtT3SalvarActionPerformed
+
+    private void TexT3tIdCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexT3tIdCompActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TexT3tIdCompActionPerformed
+
+    private void BtT3EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT3EditarActionPerformed
+        AgendaDAO agendaDao = new AgendaDAO();
+        AgendaDAO.AddPart((Integer.parseInt(this.TexT3tIdComp.getText())), (Integer.parseInt(this.TextT3IdCont.getText())));
+    }//GEN-LAST:event_BtT3EditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,8 +322,6 @@ public class TCompromisso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaT3Descricao;
-    private javax.swing.JTextArea AreaT3Participantes;
-    private javax.swing.JTextArea AreaT3Participantes1;
     private javax.swing.JButton BtT3Editar;
     private javax.swing.JButton BtT3Salvar;
     private javax.swing.JButton BtT3Voltar;
@@ -263,14 +331,15 @@ public class TCompromisso extends javax.swing.JFrame {
     private javax.swing.JLabel LabelT3Local;
     private javax.swing.JLabel LabelT3NovoCompromisso;
     private javax.swing.JLabel LabelT3Participantes;
-    private javax.swing.JLabel LabelT3Participantes1;
+    private javax.swing.JLabel LabelT3Participantes2;
+    private javax.swing.JLabel LabelT3Participantes3;
     private javax.swing.JLabel LabelT3Titulo;
+    private javax.swing.JTextField TexT3tIdComp;
     private javax.swing.JTextField TextT3DtFinal;
     private javax.swing.JTextField TextT3Dtinicial;
+    private javax.swing.JTextField TextT3IdCont;
     private javax.swing.JTextField TextT3Local;
     private javax.swing.JTextField TextT3Titulo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
