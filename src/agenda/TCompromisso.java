@@ -15,6 +15,7 @@ public class TCompromisso extends javax.swing.JFrame {
     private TMain t4;
     private TGrupo t5;
     private TUsuario t6;
+    private TCriarGrupo t7;
     
     public TCompromisso() {
         initComponents();
@@ -191,7 +192,7 @@ public class TCompromisso extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtT3Editar)
                     .addComponent(BtT3Salvar))
                 .addGap(34, 34, 34))
@@ -240,12 +241,13 @@ public class TCompromisso extends javax.swing.JFrame {
         });
     }
     
-    void setTelas(TInicial t1, TContato t2, TMain t4, TGrupo t5, TUsuario t6) {
+    void setTelas(TInicial t1, TContato t2, TMain t4, TGrupo t5, TUsuario t6,  TCriarGrupo t7) {
         this.t1 = t1;
         this.t2 = t2;
         this.t4 = t4;
         this.t5 = t5;
         this.t6 = t6;
+        this.t7 = t7;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

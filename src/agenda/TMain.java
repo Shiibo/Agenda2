@@ -6,8 +6,11 @@ package agenda;
 
 import DAO.AgendaDAO;
 import static DAO.AgendaDAO.getContato;
+import DAO.GrupoDAO;
+import static DAO.GrupoDAO.getGrupo;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,9 +23,18 @@ public class TMain extends javax.swing.JFrame {
     private TCompromisso t3;
     private TGrupo t5;
     private TUsuario t6;
+    private TCriarGrupo t7;
+    
+    DefaultTableModel modelContatos;
+    DefaultTableModel modelGrupos;
     
     public TMain() {
         initComponents();
+        
+        modelGrupos = (DefaultTableModel) TableT4Grupos.getModel();
+        modelContatos = (DefaultTableModel) TableT4Contatos.getModel();
+        AtualizarContatos();
+        AtualizarGrupos();
     }
 
     /**
@@ -34,31 +46,43 @@ public class TMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         LabelT4Grupos = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        AreaT4Grupos = new javax.swing.JTextArea();
         BtT4Grupo = new javax.swing.JButton();
         BtT4EditUser = new javax.swing.JButton();
         BtT4Contato = new javax.swing.JButton();
         LabelT4Compromissos = new javax.swing.JLabel();
         BtT4Compromissos = new javax.swing.JButton();
         LabelT4Contatos = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        AreaT4Compromissos = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        AreaT4Contatos = new javax.swing.JTextArea();
         LabelT6Nome = new javax.swing.JLabel();
         LabelT6Agenda = new javax.swing.JLabel();
         BtT4Atualizar = new javax.swing.JButton();
+        BtT4NovoGrupo = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        TableT4Grupos = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        TableT4Contatos = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        TableT4Compromissos = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         LabelT4Grupos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT4Grupos.setText("Grupos");
-
-        AreaT4Grupos.setColumns(20);
-        AreaT4Grupos.setRows(5);
-        jScrollPane3.setViewportView(AreaT4Grupos);
 
         BtT4Grupo.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
         BtT4Grupo.setText("Novo grupo");
@@ -99,14 +123,6 @@ public class TMain extends javax.swing.JFrame {
         LabelT4Contatos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT4Contatos.setText("Contatos");
 
-        AreaT4Compromissos.setColumns(20);
-        AreaT4Compromissos.setRows(5);
-        jScrollPane1.setViewportView(AreaT4Compromissos);
-
-        AreaT4Contatos.setColumns(20);
-        AreaT4Contatos.setRows(5);
-        jScrollPane2.setViewportView(AreaT4Contatos);
-
         LabelT6Nome.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 52)); // NOI18N
         LabelT6Nome.setText("Nome");
 
@@ -121,49 +137,144 @@ public class TMain extends javax.swing.JFrame {
             }
         });
 
+        BtT4NovoGrupo.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
+        BtT4NovoGrupo.setText("Novo grupo");
+        BtT4NovoGrupo.setActionCommand("Novo Grupo");
+        BtT4NovoGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT4NovoGrupoActionPerformed(evt);
+            }
+        });
+
+        TableT4Grupos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 14)); // NOI18N
+        TableT4Grupos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(TableT4Grupos);
+
+        TableT4Contatos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 14)); // NOI18N
+        TableT4Contatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome", "Telefone"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(TableT4Contatos);
+
+        TableT4Compromissos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 14)); // NOI18N
+        TableT4Compromissos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Participantes", "Inicio", "Fim"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(TableT4Compromissos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(127, 127, 127)
+                                .addComponent(LabelT4Contatos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelT4Grupos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(LabelT6Agenda)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(LabelT6Nome)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(264, 264, 264)
+                                        .addComponent(BtT4EditUser))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(BtT4Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(LabelT4Compromissos)
+                                .addGap(107, 107, 107)))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(LabelT4Contatos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelT4Grupos)
-                        .addGap(254, 254, 254)
-                        .addComponent(LabelT4Compromissos)
-                        .addGap(80, 80, 80))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtT4NovoGrupo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
                         .addComponent(BtT4Contato)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtT4Grupo)
-                        .addGap(228, 228, 228)
-                        .addComponent(BtT4Compromissos)
-                        .addGap(56, 56, 56))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelT6Agenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LabelT6Nome)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(BtT4EditUser))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtT4Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(BtT4Grupo)))
+                .addGap(232, 232, 232)
+                .addComponent(BtT4Compromissos)
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,22 +289,24 @@ public class TMain extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(LabelT6Nome)
                         .addComponent(LabelT6Agenda)))
-                .addGap(47, 47, 47)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelT4Contatos)
                     .addComponent(LabelT4Compromissos)
                     .addComponent(LabelT4Grupos))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtT4Grupo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtT4Compromissos)
-                    .addComponent(BtT4Contato))
-                .addContainerGap(144, Short.MAX_VALUE))
+                    .addComponent(BtT4Contato)
+                    .addComponent(BtT4Grupo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtT4NovoGrupo)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -220,16 +333,14 @@ public class TMain extends javax.swing.JFrame {
     }//GEN-LAST:event_BtT4CompromissosActionPerformed
 
     private void BtT4AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4AtualizarActionPerformed
-        AgendaDAO contatoDAO = new AgendaDAO();
-        List<Contato> contatos = new ArrayList<Contato>();
-        contatos  = getContato();
-        this.AreaT4Contatos.setText("");
-        
-        for (int i = 0; i < contatos.size(); i++)
-        {
-            AreaT4Contatos.append(String.valueOf(contatos.get(i).getNome()+"\n"));
-        }
+        AtualizarContatos();
+        AtualizarGrupos();
     }//GEN-LAST:event_BtT4AtualizarActionPerformed
+
+    private void BtT4NovoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4NovoGrupoActionPerformed
+        this.setVisible(false);
+        this.t7.setVisible(true);
+    }//GEN-LAST:event_BtT4NovoGrupoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,30 +377,60 @@ public class TMain extends javax.swing.JFrame {
         });
     }
     
-    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TGrupo t5, TUsuario t6) {
+    void AtualizarContatos(){
+        AgendaDAO contatoDAO = new AgendaDAO();
+        List<Contato> contatos = new ArrayList<Contato>();
+        contatos  = getContato();
+        
+        modelContatos.setRowCount(0);
+        
+        for (int i = 0; i < contatos.size(); i++)
+        {
+            modelContatos.insertRow(modelContatos.getRowCount(), new Object[]{String.valueOf(contatos.get(i).getId()), String.valueOf(contatos.get(i).getNome()), String.valueOf(contatos.get(i).getTelefone())});
+        }
+    }
+    
+    void AtualizarGrupos(){
+        GrupoDAO grupoDAO = new GrupoDAO();
+        List<Grupo> grupos = new ArrayList<Grupo>();
+        grupos  = getGrupo();
+        
+        modelGrupos.setRowCount(0);
+        
+        for (int k = 0; k < grupos.size(); k = k+1)
+        {
+            modelGrupos.insertRow(modelGrupos.getRowCount(), new Object[]{String.valueOf(grupos.get(k).getId()), String.valueOf(grupos.get(k).getNome())});
+        }
+    }
+    
+    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TGrupo t5, TUsuario t6,  TCriarGrupo t7) {
         this.t1 = t1;
         this.t2 = t2;
         this.t3 = t3;
         this.t5 = t5;
         this.t6 = t6;
+        this.t7 = t7;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea AreaT4Compromissos;
-    private javax.swing.JTextArea AreaT4Contatos;
-    private javax.swing.JTextArea AreaT4Grupos;
     private javax.swing.JButton BtT4Atualizar;
     private javax.swing.JButton BtT4Compromissos;
     private javax.swing.JButton BtT4Contato;
     private javax.swing.JButton BtT4EditUser;
     private javax.swing.JButton BtT4Grupo;
+    private javax.swing.JButton BtT4NovoGrupo;
     private javax.swing.JLabel LabelT4Compromissos;
     private javax.swing.JLabel LabelT4Contatos;
     private javax.swing.JLabel LabelT4Grupos;
     private javax.swing.JLabel LabelT6Agenda;
     private javax.swing.JLabel LabelT6Nome;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable TableT4Compromissos;
+    private javax.swing.JTable TableT4Contatos;
+    private javax.swing.JTable TableT4Grupos;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,6 +20,7 @@ public class TGrupo extends javax.swing.JFrame {
     private TCompromisso t3;
     private TMain t4;
     private TUsuario t6;
+    private TCriarGrupo t7;
     
     public TGrupo() {
         initComponents();
@@ -173,8 +174,8 @@ public class TGrupo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LabelT5Todos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelT5Todos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelT5Grupo1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -263,12 +264,13 @@ public class TGrupo extends javax.swing.JFrame {
         });
     }
     
-    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TMain t4, TUsuario t6) {
+    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TMain t4, TUsuario t6,  TCriarGrupo t7) {
         this.t1 = t1;
         this.t2 = t2;
         this.t3 = t3;
         this.t4 = t4;
         this.t6 = t6;
+        this.t7 = t7;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
