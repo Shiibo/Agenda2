@@ -24,7 +24,7 @@ public class AgendaDAO {
              pstm.setString(1, contato.getNome());
              pstm.setDate(2, contato.getNascimento());
              pstm.setString(3, contato.getEndereco());
-             pstm.setInt(4, contato.getTelefone());
+             pstm.setString(4, contato.getTelefone());
              pstm.setString(5, contato.getEmail());
              
              pstm.execute();
@@ -71,7 +71,7 @@ public class AgendaDAO {
             c.setNome(rset.getString("nome"));
             c.setNascimento(rset.getDate("nascimento"));
             c.setEndereco(rset.getString("endereco"));
-            c.setTelefone(rset.getInt("telefone"));
+            c.setTelefone(rset.getString("telefone"));
             c.setEmail(rset.getString("email"));
             
             contatos.add(c); }
@@ -108,7 +108,7 @@ public class AgendaDAO {
              pstm.setString(1, contato.getNome());
              pstm.setDate(2, contato.getNascimento());
              pstm.setString(3, contato.getEndereco());
-             pstm.setInt(4, contato.getTelefone());
+             pstm.setString(4, contato.getTelefone());
              pstm.setString(5, contato.getEmail());
              pstm.setInt(6, contato.getId());
             

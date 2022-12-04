@@ -214,7 +214,7 @@ public class TUsuario extends javax.swing.JFrame {
         u.setSenha(this.TextT6Senha.getText());
         u.setNascimento(data);
         u.setEndereco(this.TextT6Endereco.getText());
-        u.setTelefone(Integer.parseInt(this.TextT6Telefone.getText()));
+        u.setTelefone(this.TextT6Telefone.getText());
         u.setEmail(this.TextT6Email.getText());
         
         UsuarioDAO.SaveU(u);

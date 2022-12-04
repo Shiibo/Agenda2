@@ -5,7 +5,9 @@
 package DAO;
 
 import Factory.ConnectionFactory;
+import agenda.Contato;
 import agenda.Grupo;
+import agenda.GrupoContato;
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,9 +18,9 @@ import java.util.List;
  *
  * @author User
  */
-public class GrupoClienteDAO {
-    public static void Save(Grupo grupo){
-         String sql = "INSERT INTO grupo(nomegrupo) VALUES (?)";
+public class GrupoContatoDAO {
+    public static void Save(GrupoContato grupocontato){
+         String sql = "INSERT INTO grupocontato(fkIDgrupo, fkIDcont) VALUES (?,?)";
          
          Connection conn = null;
          PreparedStatement pstm = null;
@@ -27,7 +29,8 @@ public class GrupoClienteDAO {
              conn = ConnectionFactory.createConnectionToMySQL();
              
              pstm = (PreparedStatement) conn.prepareStatement(sql);
-             pstm.setString(1, grupo.getNome());
+             pstm.setInt(1, grupocontato.getIdGrupo());
+             pstm.setInt(2, grupocontato.getIdContato());
 
              
              pstm.execute();
@@ -48,8 +51,8 @@ public class GrupoClienteDAO {
          }
      }
     
-    public static void Update(Grupo grupo){
-         String sql = "Update grupo(nomegrupo) VALUES (?)";
+    public static void Update(GrupoContato grupocontato){
+         String sql = "Update grupocontato(fkIDgrupo, fkIDcont) VALUES (?,?)";
          
          Connection conn = null;
          PreparedStatement pstm = null;
@@ -58,7 +61,8 @@ public class GrupoClienteDAO {
              conn = ConnectionFactory.createConnectionToMySQL();
              
              pstm = (PreparedStatement) conn.prepareStatement(sql);
-             pstm.setString(1, grupo.getNome());
+             pstm.setInt(1, grupocontato.getIdGrupo());
+             pstm.setInt(2, grupocontato.getIdContato());
 
              
              pstm.execute();
@@ -79,8 +83,8 @@ public class GrupoClienteDAO {
          }
      }
     
-    public static void Delete(Grupo grupo){
-         String sql = "DELETE FROM grupo WHERE id = ?";
+    public static void Delete(GrupoContato grupocontato){
+         String sql = "DELETE FROM grupocontato WHERE fkIDgrup = ? and fkIDcont = ?";
          
          Connection conn = null;
          PreparedStatement pstm = null;
@@ -89,7 +93,8 @@ public class GrupoClienteDAO {
              conn = ConnectionFactory.createConnectionToMySQL();
              
              pstm = (PreparedStatement) conn.prepareStatement(sql);
-             pstm.setString(1, grupo.getNome());
+             pstm.setInt(1, grupocontato.getIdGrupo());
+             pstm.setInt(2, grupocontato.getIdContato());
 
              
              pstm.execute();
@@ -110,11 +115,13 @@ public class GrupoClienteDAO {
          }
     }
     
-    public static List<agenda.Grupo> getContatoGrupo (){
+    public static List<agenda.GrupoContato> getContatoGrupo (){
      
-    String sql = "SELECT nome FROM contato c WHERE id IN (SELECT fkIDcont FROM grupocliente gc WHERE c.id = gc.fkIDcont and c.id = ?);";
+    String sql = "SELECT nome, telefone FROM contato c WHERE id IN (SELECT fkIDcont FROM grupocontato gc WHERE fkIDgrupo = ?);";
     
     List<Grupo> grupo = new ArrayList<Grupo>();
+    List<Contato> contato = new ArrayList<Contato>();
+    List<GrupoContato> grupocontato = new ArrayList<GrupoContato>();
     
     Connection conn = null;
     PreparedStatement pstm = null;
@@ -123,19 +130,24 @@ public class GrupoClienteDAO {
     
     try {
         conn = ConnectionFactory.createConnectionToMySQL();
-        
+        GrupoContato gp = new GrupoContato();
         pstm = (PreparedStatement) conn.prepareStatement(sql);
-        
+        pstm.setInt(1, gp.getIdGrupo());
         rset = pstm.executeQuery();
         
         while (rset.next()) {
             
             Grupo g = new Grupo();
-            //nome, nascimento, endereco, telefone, email
-            g.setId(rset.getInt("idgrupo"));
-            g.setNome(rset.getString("nomegrupo"));
+            Contato c = new Contato();
             
-            grupo.add(g); }
+            //nome, nascimento, endereco, telefone, email
+            gp.setNomeGrupo(rset.getString("nomegrupo"));
+            gp.setNomeContato(rset.getString("nome"));
+            c.setTelefone(rset.getString("telefone"));
+            
+            grupocontato.add(gp);
+            contato.add(c);
+        }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -153,6 +165,6 @@ public class GrupoClienteDAO {
             e.printStackTrace();
         }
                 }
-        return grupo;
+        return grupocontato;
     }
 }

@@ -199,7 +199,7 @@ public class TContato extends javax.swing.JFrame {
         c.setNome(this.TextT2Nome.getText());
         c.setNascimento(data);
         c.setEndereco(this.TextT2Endereco.getText());
-        c.setTelefone(Integer.parseInt(this.TextT2Telefone.getText()));
+        c.setTelefone(this.TextT2Telefone.getText());
         c.setEmail(this.TextT2Email.getText());
         
         AgendaDAO.Save(c);

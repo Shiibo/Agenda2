@@ -8,12 +8,12 @@ package agenda;
  *
  * @author User
  */
-public class GrupoCliente {
+public class GrupoContato {
     
     private String nomeGrupo;
-    private String nomeCliente;
+    private String nomeContato;
     private int idGrupo;
-    private int idCliente;
+    private int idContato;
     
     public int getIdGrupo() {
         return idGrupo;
@@ -23,12 +23,12 @@ public class GrupoCliente {
         this.idGrupo = idGrupo;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getIdContato() {
+        return idContato;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdContato(int idContato) {
+        this.idContato = idContato;
     }
     
     public String getNomeGrupo() {
@@ -39,11 +39,11 @@ public class GrupoCliente {
         this.nomeGrupo = nomeGrupo;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public String getNomeContato() {
+        return nomeContato;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setNomeContato(String nomeContato) {
+        this.nomeContato = nomeContato;
     }
 }

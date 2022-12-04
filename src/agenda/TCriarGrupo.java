@@ -56,6 +56,7 @@ public class TCriarGrupo extends javax.swing.JFrame {
         BtT5Voltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabT6Grupos = new javax.swing.JTable();
+        BtT7AddContatoGrupo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +111,15 @@ public class TCriarGrupo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TabT6Grupos);
 
+        BtT7AddContatoGrupo.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
+        BtT7AddContatoGrupo.setText("Adicionar contato a um grupo");
+        BtT7AddContatoGrupo.setActionCommand("");
+        BtT7AddContatoGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT7AddContatoGrupoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,6 +132,9 @@ public class TCriarGrupo extends javax.swing.JFrame {
                         .addGap(295, 295, 295)
                         .addComponent(BtT5Voltar))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtT5Salvar))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(414, 414, 414)
@@ -130,15 +143,15 @@ public class TCriarGrupo extends javax.swing.JFrame {
                                 .addGap(53, 53, 53)
                                 .addComponent(LabelT5Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TextT7NomeGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 159, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtT5Salvar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(TextT7NomeGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(316, 316, 316)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(BtT7AddContatoGrupo))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 159, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -154,7 +167,9 @@ public class TCriarGrupo extends javax.swing.JFrame {
                 .addComponent(LabelT5Todos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtT7AddContatoGrupo)
+                .addContainerGap(140, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BtT5Voltar)
@@ -182,6 +197,11 @@ public class TCriarGrupo extends javax.swing.JFrame {
         this.t4.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtT5VoltarActionPerformed
+
+    private void BtT7AddContatoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT7AddContatoGrupoActionPerformed
+        this.setVisible(false);
+        this.t5.setVisible(true);
+    }//GEN-LAST:event_BtT7AddContatoGrupoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,6 +250,7 @@ public class TCriarGrupo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtT5Salvar;
     private javax.swing.JButton BtT5Voltar;
+    private javax.swing.JButton BtT7AddContatoGrupo;
     private javax.swing.JLabel LabelT5Nome;
     private javax.swing.JLabel LabelT5NovoGrupo;
     private javax.swing.JLabel LabelT5Todos;

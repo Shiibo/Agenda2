@@ -16,7 +16,7 @@ public class Usuario {
     private String senha;
     private Date nascimento;
     private String endereco;
-    private int telefone;
+    private String telefone;
     private String email;
 
     public int getId() {
@@ -59,11 +59,11 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

@@ -24,6 +24,7 @@ public class TMain extends javax.swing.JFrame {
     private TGrupo t5;
     private TUsuario t6;
     private TCriarGrupo t7;
+    private TVisualizarGrupos t8;
     
     DefaultTableModel modelContatos;
     DefaultTableModel modelGrupos;
@@ -49,7 +50,7 @@ public class TMain extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         LabelT4Grupos = new javax.swing.JLabel();
-        BtT4Grupo = new javax.swing.JButton();
+        BtT4AddContatoGrupo = new javax.swing.JButton();
         BtT4EditUser = new javax.swing.JButton();
         BtT4Contato = new javax.swing.JButton();
         LabelT4Compromissos = new javax.swing.JLabel();
@@ -65,6 +66,7 @@ public class TMain extends javax.swing.JFrame {
         TableT4Contatos = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         TableT4Compromissos = new javax.swing.JTable();
+        BtT4ConsultarGrupo = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,11 +86,12 @@ public class TMain extends javax.swing.JFrame {
         LabelT4Grupos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT4Grupos.setText("Grupos");
 
-        BtT4Grupo.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
-        BtT4Grupo.setText("Novo grupo");
-        BtT4Grupo.addActionListener(new java.awt.event.ActionListener() {
+        BtT4AddContatoGrupo.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
+        BtT4AddContatoGrupo.setText("Adicionar contato a um grupo");
+        BtT4AddContatoGrupo.setActionCommand("");
+        BtT4AddContatoGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtT4GrupoActionPerformed(evt);
+                BtT4AddContatoGrupoActionPerformed(evt);
             }
         });
 
@@ -224,6 +227,15 @@ public class TMain extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(TableT4Compromissos);
 
+        BtT4ConsultarGrupo.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
+        BtT4ConsultarGrupo.setText("Consultar Grupos");
+        BtT4ConsultarGrupo.setActionCommand("");
+        BtT4ConsultarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT4ConsultarGrupoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -263,18 +275,22 @@ public class TMain extends javax.swing.JFrame {
                                 .addGap(107, 107, 107)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtT4NovoGrupo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(BtT4Contato)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtT4Grupo)))
-                .addGap(232, 232, 232)
+                .addGap(105, 105, 105)
+                .addComponent(BtT4Contato)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtT4AddContatoGrupo)
+                .addGap(165, 165, 165)
                 .addComponent(BtT4Compromissos)
                 .addGap(108, 108, 108))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(469, 469, 469)
+                        .addComponent(BtT4ConsultarGrupo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(490, 490, 490)
+                        .addComponent(BtT4NovoGrupo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,10 +319,12 @@ public class TMain extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtT4Compromissos)
                     .addComponent(BtT4Contato)
-                    .addComponent(BtT4Grupo))
+                    .addComponent(BtT4AddContatoGrupo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtT4ConsultarGrupo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtT4NovoGrupo)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -322,10 +340,10 @@ public class TMain extends javax.swing.JFrame {
         this.t2.setVisible(true);
     }//GEN-LAST:event_BtT4ContatoActionPerformed
 
-    private void BtT4GrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4GrupoActionPerformed
+    private void BtT4AddContatoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4AddContatoGrupoActionPerformed
         this.setVisible(false);
         this.t5.setVisible(true);
-    }//GEN-LAST:event_BtT4GrupoActionPerformed
+    }//GEN-LAST:event_BtT4AddContatoGrupoActionPerformed
 
     private void BtT4CompromissosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4CompromissosActionPerformed
         this.setVisible(false);
@@ -341,6 +359,11 @@ public class TMain extends javax.swing.JFrame {
         this.setVisible(false);
         this.t7.setVisible(true);
     }//GEN-LAST:event_BtT4NovoGrupoActionPerformed
+
+    private void BtT4ConsultarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4ConsultarGrupoActionPerformed
+        this.setVisible(false);
+        this.t8.setVisible(true);
+    }//GEN-LAST:event_BtT4ConsultarGrupoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,21 +426,23 @@ public class TMain extends javax.swing.JFrame {
         }
     }
     
-    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TGrupo t5, TUsuario t6,  TCriarGrupo t7) {
+    void setTelas(TInicial t1, TContato t2, TCompromisso t3, TGrupo t5, TUsuario t6,  TCriarGrupo t7, TVisualizarGrupos t8) {
         this.t1 = t1;
         this.t2 = t2;
         this.t3 = t3;
         this.t5 = t5;
         this.t6 = t6;
         this.t7 = t7;
+        this.t8 = t8;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtT4AddContatoGrupo;
     private javax.swing.JButton BtT4Atualizar;
     private javax.swing.JButton BtT4Compromissos;
+    private javax.swing.JButton BtT4ConsultarGrupo;
     private javax.swing.JButton BtT4Contato;
     private javax.swing.JButton BtT4EditUser;
-    private javax.swing.JButton BtT4Grupo;
     private javax.swing.JButton BtT4NovoGrupo;
     private javax.swing.JLabel LabelT4Compromissos;
     private javax.swing.JLabel LabelT4Contatos;

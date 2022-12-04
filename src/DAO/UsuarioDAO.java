@@ -27,7 +27,7 @@ public class UsuarioDAO {
              pstm.setString(2, usuario.getSenha());
              pstm.setDate(3, usuario.getNascimento());
              pstm.setString(4, usuario.getEndereco());
-             pstm.setInt(5, usuario.getTelefone());
+             pstm.setString(5, usuario.getTelefone());
              pstm.setString(6, usuario.getEmail());
              
              pstm.execute();
@@ -62,7 +62,7 @@ public class UsuarioDAO {
              pstm.setString(2, usuario.getSenha());
              pstm.setDate(3, usuario.getNascimento());
              pstm.setString(4, usuario.getEndereco());
-             pstm.setInt(5, usuario.getTelefone());
+             pstm.setString(5, usuario.getTelefone());
              pstm.setString(6, usuario.getEmail());
              pstm.setInt(7, usuario.getId());
             
