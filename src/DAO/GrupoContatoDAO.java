@@ -166,4 +166,47 @@ public class GrupoContatoDAO {
                 }
         return grupocontato;
     }
+    
+    public static String getNomeGrupo (int id){
+        String sql = "SELECT nomegrupo FROM agenda.grupo WHERE idgrupo = ?;";
+
+        List<Grupo> grupo = new ArrayList<Grupo>();
+        List<Contato> contato = new ArrayList<Contato>();
+        List<GrupoContato> grupocontato = new ArrayList<GrupoContato>();
+
+        String nomeGrupo = "";
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        ResultSet rset = null;
+
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = (PreparedStatement) conn.prepareStatement(sql);
+            pstm.setInt(1, id);
+            rset = pstm.executeQuery();
+
+            while (rset.next()) {
+                nomeGrupo = rset.getString("nomegrupo");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rset != null) {
+                    rset.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return nomeGrupo;
+    }
 }

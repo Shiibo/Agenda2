@@ -200,6 +200,8 @@ public class TVisualizarGrupos extends javax.swing.JFrame {
         {
             modelGrupo.insertRow(modelGrupo.getRowCount(), new Object[]{String.valueOf(contatos.get(i).getNome()), String.valueOf(contatos.get(i).getTelefone())});
         }
+        
+        this.LabelT5Todos.setText(GrupoContatoDAO.getNomeGrupo(Integer.parseInt(TextT8IDGrupo.getText())));
     }//GEN-LAST:event_BtT8PesquisarActionPerformed
 
     /**
