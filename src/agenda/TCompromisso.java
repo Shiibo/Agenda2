@@ -32,7 +32,8 @@ public class TCompromisso extends javax.swing.JFrame {
     public TCompromisso() {
         initComponents();
         
-        modelContatos = (DefaultTableModel) TableT9Contatos.getModel();
+        modelContatos = (DefaultTableModel) TableT3Contatos.getModel();
+        AtualizarContatos();
     }
 
     /**
@@ -65,7 +66,8 @@ public class TCompromisso extends javax.swing.JFrame {
         LabelT3Participantes2 = new javax.swing.JLabel();
         LabelT3Participantes3 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        TableT9Contatos = new javax.swing.JTable();
+        TableT3Contatos = new javax.swing.JTable();
+        BtT4Atualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,10 +138,10 @@ public class TCompromisso extends javax.swing.JFrame {
         LabelT3Participantes3.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT3Participantes3.setText("Id do compromisso");
 
-        TableT9Contatos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 14)); // NOI18N
-        TableT9Contatos.setModel(new javax.swing.table.DefaultTableModel(
+        TableT3Contatos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 14)); // NOI18N
+        TableT3Contatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null}
             },
             new String [] {
                 "ID", "Nome", "Telefone"
@@ -160,7 +162,15 @@ public class TCompromisso extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(TableT9Contatos);
+        jScrollPane6.setViewportView(TableT3Contatos);
+
+        BtT4Atualizar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
+        BtT4Atualizar.setText("Atualizar");
+        BtT4Atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtT4AtualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,8 +179,13 @@ public class TCompromisso extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LabelT3NovoCompromisso)
-                .addGap(357, 357, 357)
-                .addComponent(BtT3Voltar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(357, 357, 357)
+                        .addComponent(BtT3Voltar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtT4Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(111, 111, 111)
@@ -225,11 +240,13 @@ public class TCompromisso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(BtT3Voltar))
+                        .addComponent(BtT3Voltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtT4Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(LabelT3NovoCompromisso)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LabelT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,6 +338,10 @@ public class TCompromisso extends javax.swing.JFrame {
         AgendaDAO.AddPart((Integer.parseInt(this.TexT3tIdComp.getText())), (Integer.parseInt(this.TextT3IdCont.getText())));
     }//GEN-LAST:event_BtT3EditarActionPerformed
 
+    private void BtT4AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4AtualizarActionPerformed
+        AtualizarContatos();
+    }//GEN-LAST:event_BtT4AtualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -383,6 +404,7 @@ public class TCompromisso extends javax.swing.JFrame {
     private javax.swing.JButton BtT3Editar;
     private javax.swing.JButton BtT3Salvar;
     private javax.swing.JButton BtT3Voltar;
+    private javax.swing.JButton BtT4Atualizar;
     private javax.swing.JLabel LabelT3Descricao;
     private javax.swing.JLabel LabelT3DtFinal;
     private javax.swing.JLabel LabelT3DtInicial;
@@ -392,7 +414,7 @@ public class TCompromisso extends javax.swing.JFrame {
     private javax.swing.JLabel LabelT3Participantes2;
     private javax.swing.JLabel LabelT3Participantes3;
     private javax.swing.JLabel LabelT3Titulo;
-    private javax.swing.JTable TableT9Contatos;
+    private javax.swing.JTable TableT3Contatos;
     private javax.swing.JTextField TexT3tIdComp;
     private javax.swing.JTextField TextT3DtFinal;
     private javax.swing.JTextField TextT3Dtinicial;
