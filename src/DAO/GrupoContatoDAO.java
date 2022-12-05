@@ -115,7 +115,7 @@ public class GrupoContatoDAO {
          }
     }
     
-    public static List<agenda.GrupoContato> getContatoGrupo (){
+    public static List<agenda.GrupoContato> getContatoGrupo (int id){
      
     String sql = "SELECT nome, telefone FROM contato c WHERE id IN (SELECT fkIDcont FROM grupocontato gc WHERE fkIDgrupo = ?);";
     

@@ -5,10 +5,14 @@
 package agenda;
 
 import DAO.AgendaDAO;
+import static DAO.AgendaDAO.getContato;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,8 +27,12 @@ public class TCompromisso extends javax.swing.JFrame {
     private TUsuario t6;
     private TCriarGrupo t7;
     
+    DefaultTableModel modelContatos;
+    
     public TCompromisso() {
         initComponents();
+        
+        modelContatos = (DefaultTableModel) TableT9Contatos.getModel();
     }
 
     /**
@@ -56,6 +64,8 @@ public class TCompromisso extends javax.swing.JFrame {
         TextT3IdCont = new javax.swing.JTextField();
         LabelT3Participantes2 = new javax.swing.JLabel();
         LabelT3Participantes3 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        TableT9Contatos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +136,32 @@ public class TCompromisso extends javax.swing.JFrame {
         LabelT3Participantes3.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT3Participantes3.setText("Id do compromisso");
 
+        TableT9Contatos.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 14)); // NOI18N
+        TableT9Contatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome", "Telefone"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(TableT9Contatos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,12 +197,6 @@ public class TCompromisso extends javax.swing.JFrame {
                                 .addGap(97, 97, 97)
                                 .addComponent(BtT3Salvar)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                                .addComponent(LabelT3Participantes3)
-                                .addGap(18, 18, 18)
-                                .addComponent(LabelT3Participantes2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(100, 100, 100))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -177,7 +207,17 @@ public class TCompromisso extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(162, 162, 162)
                                         .addComponent(BtT3Editar)))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelT3Participantes3)
+                                .addGap(18, 18, 18)
+                                .addComponent(LabelT3Participantes2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(100, 100, 100))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(86, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +229,7 @@ public class TCompromisso extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(LabelT3NovoCompromisso)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LabelT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,11 +247,15 @@ public class TCompromisso extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TextT3Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelT3Participantes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(TextT3Dtinicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(TextT3Dtinicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TextT3DtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelT3Participantes2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -311,6 +355,19 @@ public class TCompromisso extends javax.swing.JFrame {
         });
     }
     
+    void AtualizarContatos(){
+        AgendaDAO contatoDAO = new AgendaDAO();
+        List<Contato> contatos = new ArrayList<Contato>();
+        contatos  = getContato();
+        
+        modelContatos.setRowCount(0);
+        
+        for (int i = 0; i < contatos.size(); i++)
+        {
+            modelContatos.insertRow(modelContatos.getRowCount(), new Object[]{String.valueOf(contatos.get(i).getId()), String.valueOf(contatos.get(i).getNome()), String.valueOf(contatos.get(i).getTelefone())});
+        }
+    }
+    
     void setTelas(TInicial t1, TContato t2, TMain t4, TGrupo t5, TUsuario t6,  TCriarGrupo t7) {
         this.t1 = t1;
         this.t2 = t2;
@@ -334,6 +391,7 @@ public class TCompromisso extends javax.swing.JFrame {
     private javax.swing.JLabel LabelT3Participantes2;
     private javax.swing.JLabel LabelT3Participantes3;
     private javax.swing.JLabel LabelT3Titulo;
+    private javax.swing.JTable TableT9Contatos;
     private javax.swing.JTextField TexT3tIdComp;
     private javax.swing.JTextField TextT3DtFinal;
     private javax.swing.JTextField TextT3Dtinicial;
@@ -341,5 +399,6 @@ public class TCompromisso extends javax.swing.JFrame {
     private javax.swing.JTextField TextT3Local;
     private javax.swing.JTextField TextT3Titulo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane6;
     // End of variables declaration//GEN-END:variables
 }

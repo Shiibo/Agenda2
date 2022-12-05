@@ -192,7 +192,7 @@ public class TVisualizarGrupos extends javax.swing.JFrame {
         
         GrupoContatoDAO grupocDAO = new GrupoContatoDAO();
         List<GrupoContato> grupocontato = new ArrayList<GrupoContato>();
-        grupocontato = getContatoGrupo();
+        grupocontato = getContatoGrupo(Integer.parseInt(TextT8IDGrupo.getText()));
         
         modelGrupo.setRowCount(0);
         
