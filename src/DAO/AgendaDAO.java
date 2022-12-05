@@ -281,4 +281,57 @@ public class AgendaDAO {
     return id;
     }
     
+    public static List<agenda.Compromisso> getCompromisso (){
+     
+    String sql = "SELECT * FROM compromisso;";
+    
+    List<Compromisso> compromissos = new ArrayList<Compromisso>();
+    
+    Connection conn = null;
+    PreparedStatement pstm = null;
+    
+    ResultSet rset = null;
+    
+    try {
+        conn = ConnectionFactory.createConnectionToMySQL();
+        
+        pstm = (PreparedStatement) conn.prepareStatement(sql);
+        
+        rset = pstm.executeQuery();
+        
+        while (rset.next()) {
+            
+            Compromisso c = new Compromisso();
+            /*private static int id;
+    private String titulo;
+    private String descricao;
+    private Timestamp horainicio;
+    private Timestamp horafim;
+    private String local;*/
+            c.setId(rset.getInt("id"));
+            c.setTitulo(rset.getString("titulo"));
+            c.setParticipantes(rset.getString("participantes"));
+            c.setHorainicio(rset.getTimestamp("horainicio"));
+            c.setHorafim(rset.getTimestamp("horafim"));
+            
+            compromissos.add(c); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try{
+            if(rset!=null){
+                rset.close();
+            }
+                if(pstm!=null){
+                pstm.close();
+            }
+                if(conn!=null){
+                conn.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                }
+        return compromissos;
+    }
 }

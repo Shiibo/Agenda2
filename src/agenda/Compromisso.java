@@ -15,11 +15,20 @@ public class Compromisso {
     private static int id;
     private String titulo;
     private String descricao;
+    private String participantes;
     private Timestamp horainicio;
     private Timestamp horafim;
     private String local;
     //private ArrayList<Agenda.Grupo> bd = new ArrayList<Agenda.Grupo>();
+    
+    public String getParticipantes() {
+        return participantes;
+    }
 
+    public void setParticipantes(String participantes) {
+        this.participantes = participantes;
+    }
+    
     public static int getId() {
         return id;
     }

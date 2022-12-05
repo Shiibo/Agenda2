@@ -5,6 +5,7 @@
 package agenda;
 
 import DAO.AgendaDAO;
+import static DAO.AgendaDAO.getCompromisso;
 import static DAO.AgendaDAO.getContato;
 import DAO.GrupoDAO;
 import static DAO.GrupoDAO.getGrupo;
@@ -28,14 +29,17 @@ public class TMain extends javax.swing.JFrame {
     
     DefaultTableModel modelContatos;
     DefaultTableModel modelGrupos;
+    DefaultTableModel modelCompromissos;
     
     public TMain() {
         initComponents();
         
         modelGrupos = (DefaultTableModel) TableT4Grupos.getModel();
         modelContatos = (DefaultTableModel) TableT4Contatos.getModel();
+        modelCompromissos = (DefaultTableModel) TableT4Compromissos.getModel();
         AtualizarContatos();
         AtualizarGrupos();
+        AtualizarCompromissos();
     }
 
     /**
@@ -241,27 +245,28 @@ public class TMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(LabelT4Contatos)
+                        .addGap(197, 197, 197)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(LabelT4Contatos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LabelT4Grupos))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(LabelT6Agenda)))
+                                .addComponent(LabelT6Agenda))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelT4Grupos)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelT6Nome)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -272,23 +277,23 @@ public class TMain extends javax.swing.JFrame {
                                         .addComponent(BtT4Atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(LabelT4Compromissos)
-                                .addGap(107, 107, 107)))))
+                                .addGap(118, 118, 118)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(93, 93, 93)
                 .addComponent(BtT4Contato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtT4AddContatoGrupo)
-                .addGap(165, 165, 165)
+                .addGap(187, 187, 187)
                 .addComponent(BtT4Compromissos)
-                .addGap(108, 108, 108))
+                .addGap(110, 110, 110))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(469, 469, 469)
+                        .addGap(474, 474, 474)
                         .addComponent(BtT4ConsultarGrupo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(490, 490, 490)
+                        .addGap(497, 497, 497)
                         .addComponent(BtT4NovoGrupo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -353,6 +358,7 @@ public class TMain extends javax.swing.JFrame {
     private void BtT4AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4AtualizarActionPerformed
         AtualizarContatos();
         AtualizarGrupos();
+        AtualizarCompromissos();
     }//GEN-LAST:event_BtT4AtualizarActionPerformed
 
     private void BtT4NovoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT4NovoGrupoActionPerformed
@@ -423,6 +429,17 @@ public class TMain extends javax.swing.JFrame {
         for (int k = 0; k < grupos.size(); k = k+1)
         {
             modelGrupos.insertRow(modelGrupos.getRowCount(), new Object[]{String.valueOf(grupos.get(k).getId()), String.valueOf(grupos.get(k).getNome())});
+        }
+    }
+    
+    void AtualizarCompromissos(){
+        AgendaDAO agendaDAO =new AgendaDAO();
+        List<Compromisso> compromissos = new ArrayList<Compromisso>();
+        compromissos = getCompromisso();
+        
+        for (int k = 0; k < compromissos.size(); k++)
+        {
+            modelCompromissos.insertRow(modelCompromissos.getRowCount(), new Object[]{String.valueOf(compromissos.get(k).getTitulo()), String.valueOf(compromissos.get(k).getParticipantes()), String.valueOf(compromissos.get(k).getHorainicio()), String.valueOf(compromissos.get(k).getHorafim())});
         }
     }
     
