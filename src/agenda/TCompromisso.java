@@ -303,6 +303,7 @@ public class TCompromisso extends javax.swing.JFrame {
         c.setHorafim(data2);
         c.setLocal(this.TextT3Local.getText());
         //c.setEmail(this.TextT2Email.getText());
+        
         String a = this.TextT3Titulo.getText();
         String b = this.AreaT3Descricao.getText();
 

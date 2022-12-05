@@ -198,7 +198,7 @@ public class TVisualizarGrupos extends javax.swing.JFrame {
         
         for (int i = 0; i < grupocontato.size(); i++)
         {
-            modelGrupo.insertRow(modelGrupo.getRowCount(), new Object[]{String.valueOf(grupocontato.get(i).getNomeContato()), String.valueOf(contatos.get(i).getTelefone())});
+            modelGrupo.insertRow(modelGrupo.getRowCount(), new Object[]{String.valueOf(contatos.get(i).getNome()), String.valueOf(contatos.get(i).getTelefone())});
         }
     }//GEN-LAST:event_BtT8PesquisarActionPerformed
 

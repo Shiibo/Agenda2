@@ -132,7 +132,7 @@ public class GrupoContatoDAO {
         conn = ConnectionFactory.createConnectionToMySQL();
         GrupoContato gp = new GrupoContato();
         pstm = (PreparedStatement) conn.prepareStatement(sql);
-        pstm.setInt(1, gp.getIdGrupo());
+        pstm.setInt(1, id);
         rset = pstm.executeQuery();
         
         while (rset.next()) {
@@ -141,8 +141,7 @@ public class GrupoContatoDAO {
             Contato c = new Contato();
             
             //nome, nascimento, endereco, telefone, email
-            gp.setNomeGrupo(rset.getString("nomegrupo"));
-            gp.setNomeContato(rset.getString("nome"));
+            c.setNome(rset.getString("nome"));
             c.setTelefone(rset.getString("telefone"));
             
             grupocontato.add(gp);
