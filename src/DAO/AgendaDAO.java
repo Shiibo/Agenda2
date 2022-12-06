@@ -334,4 +334,58 @@ public class AgendaDAO {
                 }
         return compromissos;
     }
+    
+    public static boolean ExistComp(String t1, String t2) {
+    
+    boolean b = true;
+    
+    String sql = "SELECT * FROM compromisso WHERE horainicio OR horafim BETWEEN ? and ?";
+        
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        
+        ResultSet rset = null;
+        
+        int cont = 0;
+    
+    try {
+        conn = ConnectionFactory.createConnectionToMySQL();
+        
+        pstm = (PreparedStatement) conn.prepareStatement(sql);
+        
+        pstm.setString(1, t1);
+        pstm.setString(2, t2);
+        
+        rset = pstm.executeQuery();
+        
+        while (rset.next()) {
+            cont++;
+             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try{
+            if(rset!=null){
+                rset.close();
+            }
+                if(pstm!=null){
+                pstm.close();
+            }
+                if(conn!=null){
+                conn.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            }
+        }
+    
+    if (cont > 0){
+        b = true;
+    }
+    else {
+        b = false;
+    }
+    
+    return b;
+    }
 }

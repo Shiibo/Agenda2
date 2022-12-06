@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -323,8 +324,13 @@ public class TCompromisso extends javax.swing.JFrame {
         
         String a = this.TextT3Titulo.getText();
         String b = this.AreaT3Descricao.getText();
-
-        AgendaDAO.SaveComp(c);
+        
+        if (AgendaDAO.ExistComp(this.TextT3Dtinicial.getText(), this.TextT3DtFinal.getText())){
+            JOptionPane.showMessageDialog(null, "Não é possível criar o compromisso, já existe um compromisso neste horário.");
+        }
+        else {
+            AgendaDAO.SaveComp(c);
+        }
         
         this.TexT3tIdComp.setText(String.valueOf(AgendaDAO.GetIdComp(a, b)));
     }//GEN-LAST:event_BtT3SalvarActionPerformed

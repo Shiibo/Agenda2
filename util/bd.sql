@@ -51,8 +51,6 @@ CREATE TABLE compromisso (
   FOREIGN KEY (fkIDcont) REFERENCES contato(id)
   );
   
-  select * from contato;
   select * from compromisso;
-  
   
   

@@ -211,14 +211,14 @@ public class TMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Participantes", "Inicio", "Fim"
+                "Nome", "Inicio", "Fim"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -261,9 +261,7 @@ public class TMain extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(LabelT6Agenda))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LabelT4Grupos)))
+                            .addComponent(LabelT4Grupos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -437,9 +435,11 @@ public class TMain extends javax.swing.JFrame {
         List<Compromisso> compromissos = new ArrayList<Compromisso>();
         compromissos = getCompromisso();
         
+        modelCompromissos.setRowCount(0);
+        
         for (int k = 0; k < compromissos.size(); k++)
         {
-            modelCompromissos.insertRow(modelCompromissos.getRowCount(), new Object[]{String.valueOf(compromissos.get(k).getTitulo()), String.valueOf(compromissos.get(k).getParticipantes()), String.valueOf(compromissos.get(k).getHorainicio()), String.valueOf(compromissos.get(k).getHorafim())});
+            modelCompromissos.insertRow(modelCompromissos.getRowCount(), new Object[]{String.valueOf(compromissos.get(k).getTitulo()), String.valueOf(compromissos.get(k).getHorainicio()), String.valueOf(compromissos.get(k).getHorafim())});
         }
     }
     
