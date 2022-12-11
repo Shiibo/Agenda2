@@ -98,9 +98,52 @@ public class UsuarioDAO {
             ResultSet rs = pstm.executeQuery();
             return rs;
             
+            
         } catch (SQLException erro){
             JOptionPane.showMessageDialog(null, "UsuarioDAO: " + erro);
             return null;
         }
+    }
+    
+    public static int getUsuario(String t1, String t2){
+        int id = 0;
+        
+        String sql = "SELECT id FROM usuario WHERE nome = ? AND senha = ?;";
+    
+        Connection conn = null;
+        PreparedStatement pstm = null;
+    
+        ResultSet rset = null;
+    
+        try {
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = (PreparedStatement) conn.prepareStatement(sql);
+            pstm.setString(1, t1);
+            pstm.setString(2, t2);
+            rset = pstm.executeQuery();
+        
+            while (rset.next()) {
+                id = rset.getInt("id");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try{
+            if(rset!=null){
+                rset.close();
+            }
+                if(pstm!=null){
+                pstm.close();
+            }
+                if(conn!=null){
+                conn.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                }
+        
+        return id;
     }
 }

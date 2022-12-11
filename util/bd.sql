@@ -29,11 +29,10 @@ CREATE TABLE compromisso (
   `horainicio` DATETIME NOT NULL,
   `horafim` DATETIME NOT NULL,
   `local` VARCHAR(45) NOT NULL,
-  `participantes` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
   
   CREATE TABLE compromissocontato(
-   fkIDcompromisso INT NOT NULL,
+  fkIDcompromisso INT NOT NULL,
   fkIDcont INT NOT NULL,
   FOREIGN KEY (fkIDcompromisso) REFERENCES compromisso(id),
   FOREIGN KEY (fkIDcont) REFERENCES contato(id)
@@ -51,6 +50,16 @@ CREATE TABLE compromisso (
   FOREIGN KEY (fkIDcont) REFERENCES contato(id)
   );
   
+  select * from contato;
+  select * from usuario;
   select * from compromisso;
+  select * from compromissocontato;
+  
+ insert into grupo (nomegrupo) values ("grupo 1");
+ insert into grupocontato (fkIDgrupo, fkIDcont) values (1,20);
+
+  SELECT nome, telefone FROM contato c WHERE id IN (SELECT fkIDcont FROM grupocontato gc WHERE fkIDgrupo = 1);
+  SELECT nomegrupo FROM agenda.grupo WHERE idgrupo = 1;
+  
   
   

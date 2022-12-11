@@ -51,7 +51,6 @@ public class TUsuario extends javax.swing.JFrame {
         TextT6Nome = new javax.swing.JTextField();
         LabelT2DtNasc1 = new javax.swing.JLabel();
         TextT6DtNasc = new javax.swing.JTextField();
-        BtT6Editar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +69,7 @@ public class TUsuario extends javax.swing.JFrame {
         });
 
         LabelT6Usuario.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 36)); // NOI18N
-        LabelT6Usuario.setText("Usuário");
+        LabelT6Usuario.setText("Novo Usuário");
 
         LabelT2Telefone.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2Telefone.setText("Telefone");
@@ -92,14 +91,6 @@ public class TUsuario extends javax.swing.JFrame {
         LabelT2DtNasc1.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT2DtNasc1.setText("Data de Nascimento");
 
-        BtT6Editar.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 18)); // NOI18N
-        BtT6Editar.setText("Editar");
-        BtT6Editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtT6EditarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,9 +99,9 @@ public class TUsuario extends javax.swing.JFrame {
                 .addGap(300, 300, 300)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(175, 175, 175)
                         .addComponent(LabelT6Usuario)
-                        .addGap(405, 405, 405)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtT6Voltar)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -138,8 +129,7 @@ public class TUsuario extends javax.swing.JFrame {
                                     .addComponent(TextT6Telefone, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TextT6Email, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(BtT6Editar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(BtT6Salvar)))
                         .addGap(278, 278, 278))))
         );
@@ -151,9 +141,9 @@ public class TUsuario extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(BtT6Voltar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(40, 40, 40)
                         .addComponent(LabelT6Usuario)))
-                .addGap(64, 64, 64)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LabelT2Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,9 +173,7 @@ public class TUsuario extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(TextT6Email, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtT6Salvar)
-                    .addComponent(BtT6Editar))
+                .addComponent(BtT6Salvar)
                 .addContainerGap(113, Short.MAX_VALUE))
         );
 
@@ -219,10 +207,6 @@ public class TUsuario extends javax.swing.JFrame {
         
         UsuarioDAO.SaveU(u);
     }//GEN-LAST:event_BtT6SalvarActionPerformed
-
-    private void BtT6EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT6EditarActionPerformed
-        LabelT6Usuario.setText("Editar Usuario");
-    }//GEN-LAST:event_BtT6EditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,7 +253,6 @@ public class TUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtT6Editar;
     private javax.swing.JButton BtT6Salvar;
     private javax.swing.JButton BtT6Voltar;
     private javax.swing.JLabel LabelT2DtNasc;

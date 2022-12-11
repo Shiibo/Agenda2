@@ -111,7 +111,7 @@ public class TCompromisso extends javax.swing.JFrame {
         });
 
         LabelT3NovoCompromisso.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 36)); // NOI18N
-        LabelT3NovoCompromisso.setText("Compromisso");
+        LabelT3NovoCompromisso.setText("Novo Compromisso");
 
         LabelT3Titulo.setFont(new java.awt.Font("PMingLiU-ExtB", 0, 24)); // NOI18N
         LabelT3Titulo.setText("Título");

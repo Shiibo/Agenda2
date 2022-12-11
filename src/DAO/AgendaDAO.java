@@ -310,9 +310,10 @@ public class AgendaDAO {
     private String local;*/
             c.setId(rset.getInt("id"));
             c.setTitulo(rset.getString("titulo"));
-            c.setParticipantes(rset.getString("participantes"));
+            c.setDescricao(rset.getString("descricao"));
             c.setHorainicio(rset.getTimestamp("horainicio"));
             c.setHorafim(rset.getTimestamp("horafim"));
+            c.setLocal(rset.getString("local"));
             
             compromissos.add(c); }
         } catch (Exception e) {

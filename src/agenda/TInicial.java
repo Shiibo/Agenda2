@@ -138,9 +138,8 @@ public class TInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckBoxT1LembrarActionPerformed
 
     private void BtT1LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT1LoginActionPerformed
-        try{
+        try{   
             String nome_usuario, senha_usuario;
-        
             String pwd = new String(TextT1Senha.getPassword());
             nome_usuario = TextT1Login.getText();
             senha_usuario = pwd;
@@ -151,6 +150,7 @@ public class TInicial extends javax.swing.JFrame {
             
             UsuarioDAO objusuariodao = new UsuarioDAO();
             ResultSet rsusuariodao = objusuariodao.autenticacaoUsuario(objusuario);
+            UsuarioDAO.getUsuario(nome_usuario, pwd);
             
             if (rsusuariodao.next()){
                 //Chamar tela a abrir
@@ -165,6 +165,8 @@ public class TInicial extends javax.swing.JFrame {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "FRMLOGINVIEW" + erro);
         }
+        
+        
     }//GEN-LAST:event_BtT1LoginActionPerformed
 
     private void BtT1NovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtT1NovoUsuarioActionPerformed
